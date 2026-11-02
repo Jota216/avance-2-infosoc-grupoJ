@@ -1,0 +1,75 @@
+% !TEX root = ../main.tex
+% ==============================================================================
+% SECCIÓN 3: PLAN DE ACTIVIDADES / CARTA GANTT
+% Responsable: Jose (Líder Técnico - Complejidad Alta)
+% ==============================================================================
+
+\section{Plan de Actividades y Carta Gantt}
+\label{sec:gantt}
+
+\subsection{Introducción Metodológica y Enfoque de Planificación}
+La materialización efectiva de la propuesta formulada en el Avance~1 exige una transición estructurada desde las definiciones conceptuales hacia un plan de acción operacional, viable y financiable. Para ello, la planificación del proyecto se articula bajo un enfoque metodológico híbrido que combina la previsibilidad de una gestión por etapas (\textit{stage-gate}) con la agilidad requerida en el despliegue técnico y la vinculación comunitaria.
+
+El horizonte temporal del proyecto se proyecta en un ciclo semestral de 15 semanas de ejecución, estructurado rigurosamente en tres fases cardinales:
+\begin{enumerate}
+    \item \textbf{Fase I: Planificación y Validación Inicial (Semanas 1 a 5):} Comprende la formalización de requerimientos, la delimitación técnica del alcance, el mapeo de actores clave territoriales y el levantamiento exhaustivo de cotizaciones comerciales para fundamentar la viabilidad presupuestaria preliminar.
+    \item \textbf{Fase II: Desarrollo y Ejecución Técnico-Social (Semanas 5 a 11):} Constituye el núcleo productivo, donde se ejecuta el desarrollo modular de la solución de ingeniería en paralelo con el modelamiento financiero maestro y el despliegue de instancias de co-diseño y validación comunitaria en terreno.
+    \item \textbf{Fase III: Pruebas, Evaluación y Cierre (Semanas 11 a 15):} Abarca el aseguramiento de calidad mediante pruebas operacionales, la auditoría y rendición financiera integral, y la consolidación editorial del informe de transferencia conforme a los estándares reglamentarios.
+\end{enumerate}
+
+\subsection{Cronograma Maestro de Actividades}
+A continuación, la Tabla~\ref{tab:gantt-actividades} detalla el conjunto de las 11 actividades clave que configuran la ruta de trabajo del equipo. Cada actividad cuenta con dependencias lógicas formalizadas, estimación de duración en semanas, asignación nominal de responsable principal e identificación de su correspondiente hito o producto entregable medible.
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.22}
+\caption{Plan de Actividades Maestro y Carta Gantt del Proyecto.}
+\label{tab:gantt-actividades}
+\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{0.8cm} >{\raggedright\arraybackslash}p{1.4cm} >{\raggedright\arraybackslash}X >{\centering\arraybackslash}p{1.2cm} >{\centering\arraybackslash}p{1.5cm} >{\raggedright\arraybackslash}p{1.6cm} >{\raggedright\arraybackslash}p{3.8cm}}
+\toprule
+\textbf{ID} & \textbf{Fase} & \textbf{Actividad Clave} & \textbf{Pred.} & \textbf{Plazo} & \textbf{Responsable} & \textbf{Hito / Entregable} \\
+\midrule
+\multicolumn{7}{l}{\cellcolor{black!5}\textbf{\textit{Fase I: Planificación y Validación Inicial (Semanas 1 a 5)}}} \\
+\midrule
+A-01 & Fase I & Levantamiento de requerimientos y coherencia técnica con Fase~2. & --- & Sem. 1--2 (2 sem) & Jose & Matriz de requerimientos técnicos y alcance de ingeniería consolidado. \\
+A-02 & Fase I & Mapeo y caracterización de actores territoriales e institucionales. & --- & Sem. 1--3 (3 sem) & Mena & Catálogo de actores clave y protocolo de vinculación comunitaria. \\
+A-03 & Fase I & Levantamiento de cotizaciones comerciales y base de costos unitarios. & A-01 & Sem. 2--4 (3 sem) & Javier & Repositorio de cotizaciones formales y matriz de costos unitarios. \\
+A-04 & Fase I & Gestión, negociación y formalización de alianzas de asociatividad. & A-02 & Sem. 3--5 (3 sem) & Anais & Borrador formalizado de carta de apoyo simulada e institucional. \\
+\midrule
+\multicolumn{7}{l}{\cellcolor{black!5}\textbf{\textit{Fase II: Desarrollo y Ejecución Técnico-Social (Semanas 5 a 11)}}} \\
+\midrule
+A-05 & Fase II & Diseño e implementación de la arquitectura modular de la solución. & A-01, A-03 & Sem. 5--8 (4 sem) & Jose & Prototipo funcional modular documentado y verificado en laboratorio. \\
+A-06 & Fase II & Modelamiento financiero maestro, flujos de caja y análisis de viabilidad. & A-03, A-04 & Sem. 5--7 (3 sem) & Joaquín & Estructura presupuestaria maestra y proyección de liquidez operacional. \\
+A-07 & Fase II & Realización de talleres participativos y mesas de trabajo con usuarios. & A-04 & Sem. 6--9 (4 sem) & Mena & Actas de retroalimentación comunitaria y registro de usabilidad social. \\
+A-08 & Fase II & Integración sociotécnica del sistema y despliegue en entorno piloto. & A-05, A-07 & Sem. 8--11 (4 sem) & Joaquín & Solución integral operativa y desplegada en ambiente de pruebas piloto. \\
+\midrule
+\multicolumn{7}{l}{\cellcolor{black!5}\textbf{\textit{Fase III: Pruebas, Evaluación y Cierre (Semanas 11 a 15)}}} \\
+\midrule
+A-09 & Fase III & Verificación funcional, control de calidad y mitigación de fallas. & A-08 & Sem. 11--13 (3 sem) & Anais & Informe de auditoría técnica de calidad y matriz de riesgos operacionales. \\
+A-10 & Fase III & Auditoría de costos incurridos, análisis de desvíos y balance financiero. & A-06, A-08 & Sem. 12--14 (3 sem) & Javier & Balance financiero de cierre y justificación detallada de ejecución. \\
+A-11 & Fase III & Sistematización editorial, ajuste de extensión (5--7 págs.) y cierre. & A-09, A-10 & Sem. 13--15 (3 sem) & Coni & Documento final consolidado, aprobado por el equipo y listo para entrega. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Análisis de Optimización de la Ruta de Trabajo y Paralelización}
+Una ejecución puramente secuencial de las 11 actividades demandaría un total agregado de 35 semanas-persona, lo cual excedería con creces los límites de un periodo académico regular. Por ello, la estrategia de planificación implementada introduce una \textbf{arquitectura de ejecución concurrente de triple vía} (vía técnica, vía económico-financiera y vía de asociatividad comunitaria), optimizando el tiempo y mitigando riesgos de detención operativa en la ruta crítica:
+
+\begin{itemize}
+    \item \textbf{Compresión del Ciclo Inicial (Semanas 1 a 5):} Mientras el equipo de ingeniería formaliza la matriz de requerimientos (A-01), el área social ejecuta de forma paralela el mapeo territorial (A-02). Esto permite que el levantamiento de cotizaciones (A-03) y la tramitación de acuerdos institucionales (A-04) avancen solapados sin incurrir en tiempos muertos ni esperas burocráticas.
+    \item \textbf{Mitigación de Cuellos de Botella en Desarrollo (Semanas 5 a 11):} El desarrollo técnico del sistema (A-05) y la formulación presupuestaria maestra (A-06) se inician en sincronía al comenzar la Semana~5. Asimismo, los talleres participativos en terreno (A-07) se intercalan directamente durante el proceso de codificación e ingeniería, garantizando que los requerimientos de los usuarios retroalimenten oportunamente el prototipo antes de la integración final (A-08), evitando costosos re-procesos en etapas tardías.
+    \item \textbf{Cierre Concurrente y Control de Calidad (Semanas 11 a 15):} En la fase resolutiva, las pruebas de calidad funcional (A-09) y la auditoría financiera de balance (A-10) avanzan en paralelo entre las semanas 11 y 14. Ambas corrientes convergen de manera coordinada en la semana 13 para nutrir el proceso de edición, maquetación y control estricto de páginas liderado por el área editorial (A-11).
+\end{itemize}
+
+\subsection{Distribución Equitativa y Balance de Cargas de Trabajo}
+Para asegurar una corresponsabilidad efectiva y prevenir sobrecargas individuales, el liderazgo de las 11 actividades clave se ha distribuido con un equilibrio riguroso entre los seis integrantes del equipo, considerando sus competencias principales y roles asignados:
+\begin{itemize}
+    \item \textbf{Jose (Líder Técnico):} Conduce el levantamiento de requerimientos y coherencia con la Fase~2 (A-01) y lidera la arquitectura de desarrollo modular (A-05), garantizando la solidez ingenieril del entregable.
+    \item \textbf{Joaquín (Líder Técnico):} Encabeza la formulación presupuestaria maestra (A-06) y la integración del sistema piloto (A-08), actuando además como orquestador general de la viabilidad económica.
+    \item \textbf{Javier (Analista Financiero):} Dirige la recolección de cotizaciones comerciales (A-03) y la auditoría final de costos y desviaciones (A-10), aportando exhaustividad y respaldo empírico a las finanzas.
+    \item \textbf{Mena (Gestor de Asociatividad):} Conduce la identificación de actores estratégicos (A-02) y la ejecución de talleres comunitarios (A-07), cimentando el impacto y la pertinencia territorial.
+    \item \textbf{Anais (Vinculación Institucional):} Responsable de formalizar los compromisos de apoyo (A-04) y liderar las pruebas de verificación funcional y riesgos operacionales (A-09).
+    \item \textbf{Coni (Calidad y Edición):} Asume la sistematización editorial final, el control de formato y la regulación estricta de la extensión reglamentaria de 5 a 7 páginas (A-11), supervisando además el registro continuo de horas de dedicación horaria en las categorías de \textit{Revisión}, \textit{Desarrollo}, \textit{Reuniones} e \textit{Informe}.
+\end{itemize}
+Este esquema garantiza que cada miembro ostente la propiedad de al menos un hito crítico y participe en el soporte cruzado de las fases adyacentes, logrando una carga horaria simétrica y transparente.

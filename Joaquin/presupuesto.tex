@@ -1,0 +1,87 @@
+% !TEX root = ../main.tex
+% ==============================================================================
+% SECCIÓN 4: PRESUPUESTO DETALLADO Y VIABILIDAD FINANCIERA
+% Responsable: Joaquín (Líder Técnico / Complejidad Alta)
+% En coordinación directa con: Javier (Justificaciones y Cotizaciones)
+% ==============================================================================
+
+\section{Presupuesto Detallado y Viabilidad Financiera}
+\label{sec:presupuesto}
+
+\subsection{Estrategia Financiera y Coherencia con la Línea de Financiamiento}
+
+La materialización del proyecto \textit{Bio Planner} ---plataforma algorítmica de optimización matemática para el acondicionamiento térmico y la eficiencia energética de viviendas vulnerables--- exige una planificación presupuestaria que garantice el uso riguroso, eficiente y transparente de los recursos. La estructura de financiamiento formulada se alinea de manera estricta con las bases de fondos concursables de innovación tecnológica y social orientados al desarrollo territorial (tales como el Fondo de Innovación Social de CORFO, fondos de Vinculación con el Medio de la UTFSM y líneas de apoyo técnico del Ministerio de Vivienda y Urbanismo, MINVU).
+
+El presupuesto maestro totaliza un monto de \textbf{\$15.200.000 CLP}, distribuido en un horizonte de ejecución de seis a ocho meses. Dicho monto se encuentra balanceado en cuatro categorías lógicas obligatorias, priorizando el desarrollo de ingeniería y el impacto comunitario directo, manteniendo los costos fijos y operacionales en rangos de alta austeridad y efectividad.
+
+\subsection{Presupuesto Maestro Consolidado}
+
+En la Tabla~\ref{tab:presupuesto_maestro} se presenta el presupuesto detallado maestro del proyecto, desglosado ítem por ítem con su correspondiente cantidad, unidad métrica, costo unitario, costo total proyectado y su justificación funcional sintética.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Presupuesto Maestro Detallado del Proyecto Bio Planner (Valores en CLP)}
+\label{tab:presupuesto_maestro}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.2cm} >{\centering\arraybackslash}p{0.8cm} >{\centering\arraybackslash}p{1.2cm} >{\raggedleft\arraybackslash}p{1.8cm} >{\raggedleft\arraybackslash}p{2.0cm} X}
+\toprule
+\textbf{Ítem / Componente} & \textbf{Cant.} & \textbf{Unidad} & \textbf{Costo Unit. (\$)} & \textbf{Costo Total (\$)} & \textbf{Justificación Sintética} \\
+\midrule
+\multicolumn{6}{l}{\cellcolor{gray!20}\textbf{Categoría A: Recursos Humanos y Personal Técnico}} \\
+\midrule
+A.1. Líder de Modelamiento y Algoritmos & 6 & Meses & \$650.000 & \$3.900.000 & Formulación matemática en MiniZinc/Python, resolución algorítmica y validación de optimalidad. \\
+A.2. Desarrollador Full-Stack Web & 5 & Meses & \$600.000 & \$3.000.000 & Construcción de interfaz de usuario intuitiva, integración con API de resolución y visualización. \\
+A.3. Asesor Técnico en Eficiencia Energética & 40 & Horas & \$25.000 & \$1.000.000 & Calibración de transmitancias ($U$), catálogo de materiales constructivos y validación según norma CEV/OGUC. \\
+A.4. Coordinador Territorial y Comunitario & 4 & Meses & \$350.000 & \$1.400.000 & Enlace directo con juntas vecinales de Valparaíso, articulación con Acua Plan y gestión de talleres. \\
+\midrule
+\multicolumn{4}{r}{\textit{Subtotal Categoría A (Recursos Humanos):}} & \textbf{\$9.300.000} & \textit{61,18\% del presupuesto total} \\
+\midrule
+\multicolumn{6}{l}{\cellcolor{gray!20}\textbf{Categoría B: Equipamiento e Infraestructura Tecnológica}} \\
+\midrule
+B.1. Cámara Termográfica Infrarroja & 1 & Unidad & \$1.350.000 & \$1.350.000 & Diagnóstico no invasivo de puentes térmicos en muros, techumbres y ventanas en viviendas piloto. \\
+B.2. Sensores Ambientales Datalogger & 3 & Kits & \$150.000 & \$450.000 & Monitoreo continuo de temperatura/humedad relativa interior para contrastar el confort térmico post-mejora. \\
+B.3. Servidor Cloud para Computación & 8 & Meses & \$65.000 & \$520.000 & Instancia en la nube con alta capacidad de cómputo para ejecución concurrente del solver de optimización. \\
+B.4. Dominio Web, SSL y Licenciamiento & 1 & Paquete & \$180.000 & \$180.000 & Alojamiento web seguro, dominio institucional .cl y certificados de cifrado para protección de datos. \\
+\midrule
+\multicolumn{4}{r}{\textit{Subtotal Categoría B (Equipamiento y Tecnología):}} & \textbf{\$2.500.000} & \textit{16,45\% del presupuesto total} \\
+\midrule
+\multicolumn{6}{l}{\cellcolor{gray!20}\textbf{Categoría C: Operaciones, Terreno y Logística}} \\
+\midrule
+C.1. Viáticos y Traslados a Terreno & 20 & Visitas & \$45.000 & \$900.000 & Desplazamiento de cuadrilla técnica y equipos de medición hacia sectores altos y cerros de Valparaíso. \\
+C.2. Elementos de Protección Personal (EPP) & 4 & Sets & \$70.000 & \$280.000 & Cascos, zapatos de seguridad y chalecos reflectantes para inspecciones en techumbres y obras habitacionales. \\
+C.3. Muestrarios Didácticos de Aislantes & 6 & Kits & \$60.000 & \$360.000 & Muestras físicas de lana mineral, poliestireno y doble vidriado para interacción táctil en talleres comunitarios. \\
+C.4. Insumos Técnicos de Oficina y Fichas & 1 & Global & \$210.000 & \$210.000 & Impresión de fichas de diagnóstico arquitectónico, consentimientos informados y carpetas de entrega. \\
+\midrule
+\multicolumn{4}{r}{\textit{Subtotal Categoría C (Operaciones y Logística):}} & \textbf{\$1.750.000} & \textit{11,51\% del presupuesto total} \\
+\midrule
+\multicolumn{6}{l}{\cellcolor{gray!20}\textbf{Categoría D: Materiales de Difusión y Vinculación Comunitaria}} \\
+\midrule
+D.1. Guías Ciudadanas de Aislación Térmica & 300 & Unidades & \$2.500 & \$750.000 & Manuales impresos a color en lenguaje sencillo con recomendaciones prácticas de confort y uso del software. \\
+D.2. Coffee Break y Logística de 3 Talleres & 3 & Jornadas & \$120.000 & \$360.000 & Alimentación y habilitación de sedes sociales vecinales para talleres participativos de diagnóstico comunitario. \\
+D.3. Pendones Roller y Material Gráfico & 4 & Unidades & \$60.000 & \$240.000 & Soportes visuales de gran formato para presentación del proyecto en ferias comunitarias y seminarios USM. \\
+D.4. Cápsulas Audiovisuales de Transferencia & 2 & Videos & \$150.000 & \$300.000 & Videos didácticos de libre acceso sobre el funcionamiento de la plataforma y casos de éxito en viviendas. \\
+\midrule
+\multicolumn{4}{r}{\textit{Subtotal Categoría D (Difusión y Vinculación):}} & \textbf{\$1.650.000} & \textit{10,86\% del presupuesto total} \\
+\midrule[\heavyrulewidth]
+\multicolumn{4}{r}{\textbf{TOTAL GENERAL DEL PROYECTO:}} & \textbf{\$15.200.000} & \textbf{100,00\% Viabilidad Financiera Plena} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Análisis de Viabilidad Financiera, Sostenibilidad y Congruencia}
+
+El análisis de la estructura de costos evidencia una \textbf{alta viabilidad económica y técnica} sustentada en los siguientes pilares estratégicos:
+
+\begin{enumerate}
+    \item \textbf{Concentración en Capital Humano Avanzado (61,18\%):} La mayor proporción de los recursos se destina directamente a honorarios de ingeniería, desarrollo de software y asesoría técnica especializada. Dado que el núcleo del proyecto consiste en la creación de un motor de optimización matemática reproducible y de una plataforma accesible para familias y arquitectos, la inversión intensiva en desarrollo garantiza la obtención de un producto de software robusto, documentado y validado en campo frente a la normativa térmica chilena (OGUC art. 4.1.10 y CEV).
+    
+    \item \textbf{Inversión en Activos Tangibles de Larga Vida Útil (16,45\%):} La adquisición de la cámara termográfica y los sensores datalogger constituye una inversión de capital eficiente. Estos instrumentos no solo se emplean en la fase de validación de las viviendas piloto del proyecto, sino que permanecerán como equipamiento de transferencia tecnológica en los laboratorios de la UTFSM y a disposición de la red colaborativa con la oficina de arquitectura técnica Acua Plan para futuras intervenciones territoriales.
+    
+    \item \textbf{Presupuesto Operativo y Territorial Acotado (11,51\%):} Los costos logísticos se encuentran rigurosamente planificados para optimizar las jornadas de terreno mediante cuadrillas simultáneas y visitas calendarizadas, cubriendo movilización y seguridad sin incurrir en arriendos costosos de oficinas o vehículos permanentes.
+    
+    \item \textbf{Apropiación Social y Retorno Comunitario (10,86\%):} La asignación para difusión garantiza que los resultados algorítmicos no queden aislados en un plano teórico, sino que se transformen en guías ciudadanas tangibles, talleres participativos en sedes vecinales y recursos audiovisuales abiertos que empoderen a la comunidad en la toma de decisiones constructivas.
+    
+    \item \textbf{Sostenibilidad Económica Post-Proyecto:} Una vez finalizado el fondo de financiamiento, la plataforma \textit{Bio Planner} no requiere costos de mantenimiento elevados. El software opera bajo licencias de código abierto, la infraestructura en la nube puede migrar a servidores universitarios de la UTFSM a costo marginal cero, y los catálogos constructivos pueden ser actualizados de forma colaborativa por oficinas técnicas y municipios asociados, garantizando la continuidad operativa sin dependencia de financiamiento externo recurrente.
+\end{enumerate}
+
+\par\noindent\textbf{Coordinación e integración técnica:} Las justificaciones detalladas, fuentes de cotización formales de mercado (proveedores chilenos con valores netos e IVA desglosados) y el respaldo normativo de cada uno de los 16 ítems anteriores se encuentran documentados exhaustivamente en la Sección~\ref{sec:justificaciones}, elaborada por el Analista Financiero del equipo (Javier). Asimismo, la correlación cronológica de estos desembolsos con las 12 actividades estratégicas del proyecto se encuentra articulada en el Plan de Actividades de la Sección~\ref{sec:gantt} (Jose).

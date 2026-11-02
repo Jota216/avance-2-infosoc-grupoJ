@@ -1,48 +1,70 @@
-% Documento principal: compilar este archivo desde la raíz del proyecto.
-\documentclass[journal,12pt,onecolumn]{IEEEtran}
+% ==============================================================================
+% UNIVERSIDAD TÉCNICA FEDERICO SANTA MARÍA
+% DEPARTAMENTO DE INFORMÁTICA
+% INGENIERÍA, INFORMÁTICA Y SOCIEDAD
+% FASE 3: SEGUNDO AVANCE (PLAN DE ACCIÓN Y VIABILIDAD FINANCIERA)
+% ==============================================================================
+\documentclass[journal,11pt,onecolumn]{IEEEtran}
+
+% --- Paquetes de Idioma y Codificación ---
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[spanish]{babel}
-\usepackage{amsmath,amsfonts,array,booktabs}
+\usepackage[spanish,es-tabla]{babel}
+
+% --- Paquetes Matemáticos y Tablas Profesionales ---
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{array,booktabs,tabularx,colortbl}
+\usepackage{multirow}
+
+% --- Gráficos y Colores ---
 \usepackage{graphicx,float}
-\usepackage{xcolor,listings}
+\usepackage{xcolor}
+
+% --- Formato de Página y Enlaces ---
+\usepackage{geometry}
+\geometry{letterpaper, top=2.2cm, bottom=2.2cm, left=2.2cm, right=2.2cm}
 \usepackage[hidelinks]{hyperref}
 
-\newcommand{\pendiente}[1]{\par\noindent\textcolor{red!65!black}{\textbf{Pendiente:} #1}\par}
-\lstset{
-  language=Python,
-  basicstyle=\ttfamily\footnotesize,
-  breaklines=true,
-  columns=fullflexible,
-  keepspaces=true,
-  showstringspaces=false,
-  numbers=left,
-  numberstyle=\tiny\color{gray},
-  frame=single,
-  keywordstyle=\color{blue},
-  commentstyle=\color{gray},
-  literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
-           {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
-           {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {ü}{{\"u}}1
-}
+% --- Macros de Coordinación ---
+\newcommand{\pendiente}[2]{\par\noindent\textcolor{red!70!black}{\textbf{[Pendiente (#1):} #2\textbf{]}}\par}
+\newcommand{\categoria}[1]{\vspace{0.4em}\textbf{\textit{#1}}\vspace{0.2em}}
 
 \begin{document}
-\title{\textit{Informe Entrega 2 -- Grupo 7 -- Paralelo por completar}}
-\author{Mena, Jose, Joaquin y Constanza\\
-Nombres completos y correos por completar\\
-UTFSM Casa Central, Valparaíso, Chile}
-\maketitle
 
-\input{Mena/parte}
-\input{Jose/modelo}
-\input{Jose/parte}
-\input{Joaquin/parte}
-\input{Constanza/parte}
-\input{Mena/conclusiones}
+% ------------------------------------------------------------------------------
+% 1. PORTADA REGLAMENTARIA Y TABLA DE DEDICACIÓN HORARIA (Responsable: Coni)
+% ------------------------------------------------------------------------------
+\input{Coni/portada}
 
-\appendices
-\section{Código completo del generador}
-\pendiente{Jose: el archivo incluido aún corresponde al generador original.
-Corregirlo y revisar que coincida con las instancias definitivas.}
-\lstinputlisting{Jose/generador.py}
+% ------------------------------------------------------------------------------
+% 2. RESUMEN E INTEGRACIÓN DEL PRIMER AVANCE / FASE 2 (Responsable: Coni)
+% ------------------------------------------------------------------------------
+\input{Coni/avance1_resumen}
+
+% ------------------------------------------------------------------------------
+% 3. PLAN DE ACTIVIDADES / CARTA GANTT (Responsable: Jose)
+% ------------------------------------------------------------------------------
+\input{Jose/gantt}
+
+% ------------------------------------------------------------------------------
+% 4. PRESUPUESTO DETALLADO Y VIABILIDAD FINANCIERA (Responsables: Joaquin y Javier)
+% ------------------------------------------------------------------------------
+\input{Joaquin/presupuesto}
+\input{Javier/justificaciones}
+
+% ------------------------------------------------------------------------------
+% 5. COLABORACIÓN Y ASOCIATIVIDAD (Responsable: Mena)
+% ------------------------------------------------------------------------------
+\input{Mena/asociatividad}
+
+% ------------------------------------------------------------------------------
+% 6. ANEXO OBLIGATORIO: BORRADOR DE CARTA DE APOYO SIMULADA (Responsable: Anais)
+% ------------------------------------------------------------------------------
+\input{Anais/carta_apoyo}
+
+% ------------------------------------------------------------------------------
+% 7. REFERENCIAS BIBLIOGRÁFICAS Y DOCUMENTALES (Responsable: Coni)
+% ------------------------------------------------------------------------------
+\input{Coni/referencias}
+
 \end{document}

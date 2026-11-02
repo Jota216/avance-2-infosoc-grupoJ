@@ -1,0 +1,48 @@
+% !TEX root = ../main.tex
+% ==============================================================================
+% SECCIÓN 1: ANTECEDENTES E INTEGRACIÓN DEL PRIMER AVANCE (FASE 2)
+% Responsable: Coni (Calidad, Formato, Integración y Control de Extensión)
+% ==============================================================================
+
+\section{Antecedentes e Integración del Primer Avance}
+\label{sec:avance1}
+
+\subsection{Diagnóstico Socio-Técnico y Contexto Territorial}
+
+En Chile, la precariedad de la envolvente constructiva residencial constituye un factor estructural de desigualdad socio-ambiental. De acuerdo con los catastros del Ministerio de Vivienda y Urbanismo (MINVU) y estudios de la Red de Pobreza Energética (RedPE), más del 60\% del parque habitacional del país fue edificado con anterioridad a la entrada en vigencia de las primeras regulaciones térmicas de la Ordenanza General de Urbanismo y Construcciones (OGUC art. 4.1.10). Esta deficiencia se traduce en severas infiltraciones de aire, puentes térmicos en tabiquerías y pérdidas masivas de calor en cubiertas y aberturas.
+
+En el contexto territorial del Gran Valparaíso ---caracterizado por una topografía de cerros pronunciados, alta salinidad marina, neblina costera y viento constante--- la vulnerabilidad habitacional es crítica en sectores autoconstruidos y campamentos de cerros como Playa Ancha, Ramaditas y San Roque. Las familias de menores ingresos experimentan condiciones de \textit{pobreza energética multidimensional}: para alcanzar umbrales mínimos de temperatura interior deben destinar hasta un 25\% de sus ingresos a combustibles ineficientes y contaminantes (leña húmeda, gas licuado o parafina). Esto incrementa drásticamente las enfermedades respiratorias crónicas, deteriora la infraestructura habitacional por condensación y genera un riesgo recurrente de incendios estructurales.
+
+\subsection{Propuesta de Solución Tecnológica y Beneficiarios}
+
+Para abordar esta problemática de manera accesible y fundamentada, el proyecto formula la plataforma \textit{Bio Planner}, inspirada en la vinculación tecnológica desarrollada en la Universidad Técnica Federico Santa María (Feria de Software FESW 2025) en cooperación con la oficina de arquitectura técnica Acua Plan. \textit{Bio Planner} es un sistema computacional de optimización algorítmica asistido por un motor de Programación Lineal Entera Binaria (codificado en MiniZinc y Python). 
+
+La plataforma permite a las familias y equipos técnicos ingresar los datos geométricos de una vivienda y discriminar entre elementos fijos (soluciones no modificables) y elementos libres u optimizables (techos, muros perimetrales, sobretechos, ventanas y puertas). A partir de un catálogo formal de alternativas constructivas locales (e.g. lanas minerales, poliestireno expandido, aislapol, celulosa proyectada y doble vidriado hermético), el algoritmo selecciona exactamente la combinación constructiva que \textbf{minimiza el costo total de inversión económica}, asegurando de manera simultánea que la transmitancia térmica promedio ponderada por área no sobrepase el umbral normativo máximo $U_{\max}$, en plena concordancia con la Reglamentación Térmica chilena y los estándares de la Calificación Energética de Viviendas (CEV).
+
+\begin{itemize}
+    \item \textbf{Beneficiarios Directos:} Familias de comités de vivienda social, cooperativas autogestionadas y propietarios vulnerables de sectores altos de Valparaíso, quienes acceden a planes de acondicionamiento personalizados, científicamente optimizados y económicamente factibles.
+    \item \textbf{Beneficiarios Indirectos:} Entidades Patrocinantes (EP), cuadrillas técnicas del SERVIU Región de Valparaíso, departamentos de vivienda municipales, arquitectos independientes y la comunidad académica de la UTFSM, gracias a la disponibilidad de una herramienta de software abierta y auditable.
+\end{itemize}
+
+\subsection{Objetivos del Proyecto}
+
+\noindent\textbf{Objetivo General:} Desarrollar, validar y transferir una plataforma computacional de optimización matemática de código abierto (\textit{Bio Planner}) orientada al acondicionamiento térmico de viviendas sociales en Valparaíso, que minimice la inversión requerida en materiales constructivos garantizando el cumplimiento normativo ($U \le U_{\max}$) para mitigar la pobreza energética y mejorar la habitabilidad.
+
+\noindent\textbf{Objetivos Específicos:}
+\begin{enumerate}
+    \item \textbf{OE1 (Modelamiento Matemático y Algorítmico):} Formular y programar un modelo de optimización lineal binaria factible, reproducible y escalable que determine la solución constructiva óptima en tiempos computacionales acotados.
+    \item \textbf{OE2 (Estandarización y Calibración Técnica):} Construir una base de datos de materiales constructivos locales que asocie parámetros de transmitancia térmica ($W/\text{m}^2\text{K}$) con cotizaciones comerciales auditables en moneda nacional (\$ CLP).
+    \item \textbf{OE3 (Desarrollo de Software y Accesibilidad):} Construir una plataforma web de código abierto con una interfaz intuitiva que permita la parametrización de geometrías habitacionales y la generación de reportes técnicos ejecutivos.
+    \item \textbf{OE4 (Validación Territorial y Transferencia):} Evaluar la efectividad del sistema mediante diagnósticos termográficos en viviendas piloto de Valparaíso y talleres participativos de apropiación social con dirigentes comunitarios.
+\end{enumerate}
+
+\subsection{Línea de Financiamiento y Articulación Orgánica con la Fase 3}
+
+El proyecto postula a la línea del \textbf{Fondo de Innovación Social de CORFO} (Convocatoria Prototipos de Innovación Social Territorial), complementado por fondos de \textbf{Vinculación con el Medio de la UTFSM} y articulaciones técnicas del MINVU. 
+
+La presente entrega (Fase 3) constituye la operacionalización metodológica y económica de los compromisos estratégicos fijados en la Fase 2:
+\begin{enumerate}
+    \item Los 4 objetivos específicos se traducen en la hoja de ruta temporal de la \textbf{Carta Gantt} (Sección~\ref{sec:gantt}, desarrollada por Jose), optimizando la ruta crítica mediante tareas paralelas entre desarrollo de software, mediciones de terreno y gestión comunitaria.
+    \item Las necesidades técnicas y territoriales se desglosan en el \textbf{Presupuesto Detallado Maestro} de \$15.200.000 CLP (Sección~\ref{sec:presupuesto}, elaborado por Joaquín) y sus \textbf{Justificaciones Técnicas y Cotizaciones} (Sección~\ref{sec:justificaciones}, a cargo de Javier), demostrando la eficiencia del gasto fiscal.
+    \item La viabilidad social y sustentabilidad se garantizan mediante la red estratégica de \textbf{Colaboración y Asociatividad} (Sección~\ref{sec:asociatividad}, redactada por Mena) y el respaldo institucional plasmado en el borrador formal de la \textbf{Carta de Apoyo} (Sección~\ref{sec:carta_apoyo}, presentada por Anais).
+\end{enumerate}

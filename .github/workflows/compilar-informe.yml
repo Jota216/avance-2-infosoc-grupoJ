@@ -11,7 +11,6 @@ on:
       - '**/*.jpg'
       - '**/*.jpeg'
       - '**/*.pdf'
-      - 'Jose/generador.py'
       - '.github/workflows/compilar-informe.yml'
   workflow_dispatch:
 
@@ -39,14 +38,14 @@ jobs:
           root_file: main.tex
           texlive_version: '2025'
           args: -pdf -interaction=nonstopmode -halt-on-error -file-line-error -outdir=build
-          post_compile: cp build/main.pdf build/informe-2.pdf
+          post_compile: cp build/main.pdf build/Segundo_Avance_Fase3.pdf
 
       - name: Guardar PDF
         id: pdf
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: informe-pdf
-          path: build/informe-2.pdf
+          path: build/Segundo_Avance_Fase3.pdf
           archive: false
           if-no-files-found: error
           retention-days: 14
@@ -65,4 +64,3 @@ jobs:
           path: build/main.log
           if-no-files-found: ignore
           retention-days: 7
-
