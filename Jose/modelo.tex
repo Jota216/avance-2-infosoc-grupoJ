@@ -1,0 +1,282 @@
+% !TEX root = ../main.tex
+\section{Modelamiento del problema}
+
+El problema consiste en seleccionar, para cada elemento constructivo optimizable
+de una vivienda, exactamente una alternativa desde el catálogo técnico
+correspondiente a su categoría. Cada alternativa posee una transmitancia
+térmica y un costo por metro cuadrado. El objetivo es minimizar el costo total
+de los materiales seleccionados, manteniendo la transmitancia térmica promedio
+ponderada por área de la vivienda por debajo de un valor máximo permitido
+$U_{\max}$.
+
+Debido a que la decisión asociada a cada alternativa es del tipo
+seleccionar/no seleccionar, el problema se formula como un modelo de
+Programación Lineal Entera Binaria.
+
+\subsection{Conjuntos e índices}
+
+Se definen los siguientes conjuntos:
+
+\begin{itemize}
+    \item $C$: conjunto de categorías de elementos constructivos de la vivienda,
+    por ejemplo, muros perimetrales, techumbre, pisos, ventanas y puertas.
+    \item $I$: conjunto de elementos constructivos de la vivienda.
+    \item $I^{O} \subseteq I$: conjunto de elementos optimizables o libres.
+    \item $I^{F} \subseteq I$: conjunto de elementos fijos, cuya solución
+    constructiva ya fue definida previamente por el usuario.
+    \item $J_c$: conjunto de alternativas disponibles en el catálogo para la
+    categoría $c \in C$.
+\end{itemize}
+
+Además, se utiliza la función $g(i)$ para indicar la categoría a la cual
+pertenece cada elemento $i \in I$. Por lo tanto, las alternativas admisibles
+para un elemento $i$ son las contenidas en $J_{g(i)}$.
+
+Los índices utilizados son:
+
+\begin{itemize}
+    \item $i$: índice de elementos constructivos.
+    \item $c$: índice de categorías.
+    \item $j$: índice de alternativas de material o solución constructiva.
+\end{itemize}
+
+\subsection{Parámetros}
+
+Los parámetros utilizados por el modelo se presentan en la
+Tabla~\ref{tab:parametros}.
+
+\begin{table}[h]
+\centering
+\caption{Parámetros del modelo}
+\label{tab:parametros}
+\begin{tabular}{|p{2.2cm}|p{5.3cm}|p{2.3cm}|p{3.2cm}|}
+\hline
+\textbf{Parámetro} & \textbf{Descripción} & \textbf{Unidad} & \textbf{Fuente / rango} \\ \hline
+$A_i$ & Área del elemento constructivo $i$. & m$^2$ & Generador de instancias. Debe ser positiva. \\ \hline
+$U_{ij}$ & Transmitancia térmica de la alternativa $j$ aplicable al elemento optimizable $i$. & W/m$^2$K & Catálogo técnico generado para la instancia. \\ \hline
+$C_{ij}$ & Costo por metro cuadrado de la alternativa $j$ aplicable al elemento optimizable $i$. & u.m./m$^2$ & Catálogo técnico generado para la instancia. \\ \hline
+$U_i^{F}$ & Transmitancia térmica del material predefinido para el elemento fijo $i$. & W/m$^2$K & Dato de la instancia. \\ \hline
+$C_i^{F}$ & Costo por metro cuadrado del material predefinido para el elemento fijo $i$. & u.m./m$^2$ & Dato de la instancia. \\ \hline
+$U_{\max}$ & Transmitancia térmica promedio ponderada máxima permitida para la vivienda. & W/m$^2$K & Parámetro configurable de cada instancia. \\ \hline
+$A_T$ & Área total considerada en el balance térmico, definida como $A_T=\sum_{i\in I}A_i$. & m$^2$ & Calculada a partir de las áreas de la instancia. \\ \hline
+\end{tabular}
+\end{table}
+
+El enunciado no fija rangos numéricos específicos para las áreas, costos,
+transmitancias ni para $U_{\max}$. Estos valores deben ser definidos por el
+generador de instancias de forma técnicamente coherente. En particular, para
+las alternativas de una misma categoría debe respetarse la relación
+cualitativa indicada en el proyecto: alternativas con menor transmitancia
+térmica, es decir, con mejor aislación, deben presentar un mayor costo por
+metro cuadrado.
+
+Respecto al tamaño de las instancias, el proyecto establece:
+
+\begin{itemize}
+    \item Instancias pequeñas: 3--4 categorías, 5--10 alternativas por
+    categoría y 2--4 elementos libres.
+    \item Instancias medianas: 5 categorías, 11--25 alternativas por
+    categoría y 5--8 elementos libres.
+    \item Instancias grandes: 5 categorías, 26--50 alternativas por
+    categoría y 9--15 elementos libres.
+\end{itemize}
+
+Las dimensiones generales de la vivienda, tales como superficie habitable,
+altura y volumen interior, forman parte de la caracterización de cada
+instancia. En el modelo propuesto, su efecto se incorpora a través de las
+áreas $A_i$ asignadas a cada elemento constructivo.
+
+\subsection{Variable de decisión}
+
+Para cada elemento optimizable $i \in I^{O}$ y cada alternativa
+$j \in J_{g(i)}$, se define la variable binaria:
+
+\[
+x_{ij}=
+\begin{cases}
+1, & \text{si se selecciona la alternativa } j \text{ para el elemento } i,\\
+0, & \text{en otro caso.}
+\end{cases}
+\]
+
+Por lo tanto,
+
+\[
+x_{ij}\in\{0,1\},
+\qquad
+\forall i\in I^{O},\;
+\forall j\in J_{g(i)}.
+\]
+
+No se define una variable de decisión para los elementos pertenecientes a
+$I^{F}$, debido a que su material se encuentra fijado de antemano y no puede
+ser modificado por el modelo.
+
+\subsection{Función objetivo}
+
+El objetivo es minimizar el costo total de materiales de la vivienda. Para los
+elementos optimizables, el costo de una alternativa corresponde al costo por
+metro cuadrado multiplicado por el área del elemento. Los elementos fijos
+aportan un costo constante.
+
+La función objetivo queda definida como:
+
+\[
+\min Z =
+\sum_{i\in I^{O}}
+\sum_{j\in J_{g(i)}}
+A_i C_{ij}x_{ij}
++
+\sum_{i\in I^{F}}
+A_i C_i^{F}.
+\]
+
+El primer término representa el costo de las soluciones constructivas
+seleccionadas por el modelo para los elementos optimizables. El segundo
+término corresponde al costo de los elementos fijos.
+
+Como el segundo término es constante, no modifica cuál combinación de
+alternativas resulta óptima. Sin embargo, se mantiene en la formulación para
+que $Z$ represente el costo total de materiales de la vivienda. Si en la
+implementación los elementos fijos se consideran una inversión ya realizada
+o costo hundido, dicho término puede omitirse sin cambiar la solución
+óptima de los elementos libres.
+
+\subsection{Restricciones}
+
+\subsubsection{Selección de una alternativa por elemento optimizable}
+
+Cada elemento libre debe utilizar exactamente una alternativa del catálogo
+correspondiente a su categoría:
+
+\[
+\sum_{j\in J_{g(i)}} x_{ij}=1,
+\qquad
+\forall i\in I^{O}.
+\]
+
+Esta restricción evita que un elemento optimizable quede sin material
+asignado y también impide que se seleccionen simultáneamente dos o más
+alternativas para el mismo elemento.
+
+\subsubsection{Desempeño térmico global}
+
+La transmitancia térmica promedio ponderada por área de la vivienda debe
+ser menor o igual que el límite $U_{\max}$.
+
+Considerando tanto elementos optimizables como fijos, la transmitancia promedio
+puede expresarse como:
+
+\[
+\overline{U} =
+\frac{
+\displaystyle
+\sum_{i\in I^{O}}
+\sum_{j\in J_{g(i)}}
+A_iU_{ij}x_{ij}
++
+\sum_{i\in I^{F}}
+A_iU_i^{F}
+}{
+\displaystyle
+\sum_{i\in I}A_i
+}.
+\]
+
+Por requerimiento del problema:
+
+\[
+\overline{U}\leq U_{\max}.
+\]
+
+Dado que el denominador corresponde al área total de la vivienda y es un
+parámetro conocido, la restricción anterior puede escribirse de manera
+lineal como:
+
+\[
+\sum_{i\in I^{O}}
+\sum_{j\in J_{g(i)}}
+A_iU_{ij}x_{ij}
++
+\sum_{i\in I^{F}}
+A_iU_i^{F}
+\leq
+U_{\max}
+\sum_{i\in I}A_i.
+\]
+
+De esta forma, se conserva la estructura lineal del modelo y se garantiza que
+el desempeño térmico global de la vivienda no exceda el umbral permitido.
+
+\subsection{Modelo matemático completo}
+
+El modelo puede resumirse de la siguiente manera:
+
+\[
+\boxed{
+\begin{aligned}
+\min \quad
+& Z=
+\sum_{i\in I^{O}}
+\sum_{j\in J_{g(i)}}
+A_iC_{ij}x_{ij}
++
+\sum_{i\in I^{F}}
+A_iC_i^{F}
+\\[2mm]
+\text{s.a.}\quad
+& \sum_{j\in J_{g(i)}}x_{ij}=1,
+&& \forall i\in I^{O},
+\\[2mm]
+&
+\sum_{i\in I^{O}}
+\sum_{j\in J_{g(i)}}
+A_iU_{ij}x_{ij}
++
+\sum_{i\in I^{F}}
+A_iU_i^{F}
+\leq
+U_{\max}
+\sum_{i\in I}A_i,
+\\[2mm]
+& x_{ij}\in\{0,1\},
+&& \forall i\in I^{O},
+\quad \forall j\in J_{g(i)}.
+\end{aligned}
+}
+\]
+
+\subsection{Supuestos del modelamiento}
+
+Para representar el problema mediante Programación Lineal Entera Binaria se
+adoptan los siguientes supuestos:
+
+\begin{itemize}
+    \item Cada elemento constructivo pertenece a una única categoría.
+    \item Cada elemento optimizable debe recibir exactamente una alternativa
+    disponible para su categoría.
+    \item Las alternativas del catálogo son compatibles con la categoría
+    para la cual fueron generadas.
+    \item El área de cada elemento es conocida y permanece constante durante
+    la optimización.
+    \item La transmitancia térmica y el costo por metro cuadrado de cada
+    alternativa son datos conocidos de la instancia y no dependen de las
+    demás decisiones.
+    \item Los costos son proporcionales al área cubierta por cada material.
+    \item El aporte térmico global se obtiene mediante una suma ponderada por
+    área, por lo que se asume aditividad entre los elementos.
+    \item Los elementos fijos no pueden ser modificados por el modelo, pero su
+    transmitancia se considera dentro del balance térmico global.
+    \item El valor de $U_{\max}$ es conocido antes de resolver cada instancia.
+    \item No se consideran en esta entrega costos adicionales de instalación,
+    mano de obra, transporte, disponibilidad de stock ni interacciones
+    constructivas entre materiales, ya que el enunciado no entrega información
+    para modelarlos.
+    \item Las instancias entregadas al modelo deben ser factibles, es decir,
+    debe existir al menos una selección de alternativas que satisfaga todas
+    las restricciones.
+\end{itemize}
+
+La formulación cumple los supuestos de proporcionalidad y aditividad propios
+de los modelos lineales. Además, la naturaleza binaria de $x_{ij}$ permite
+representar directamente la selección discreta de materiales.

@@ -1,0 +1,177 @@
+{
+    "metadata": {
+        "id": "INST-03",
+        "tamano": "Pequeña",
+        "U_max": 1.83
+    },
+    "catalogo": {
+        "CAT-1": [
+            {
+                "id_alt": "ALT-CAT-1-1",
+                "U": 3.1,
+                "C": 4610.0
+            },
+            {
+                "id_alt": "ALT-CAT-1-2",
+                "U": 1.9,
+                "C": 7387.0
+            },
+            {
+                "id_alt": "ALT-CAT-1-3",
+                "U": 3.22,
+                "C": 5004.0
+            },
+            {
+                "id_alt": "ALT-CAT-1-4",
+                "U": 1.26,
+                "C": 12236.0
+            },
+            {
+                "id_alt": "ALT-CAT-1-5",
+                "U": 2.25,
+                "C": 6204.0
+            },
+            {
+                "id_alt": "ALT-CAT-1-6",
+                "U": 2.74,
+                "C": 5518.0
+            },
+            {
+                "id_alt": "ALT-CAT-1-7",
+                "U": 2.79,
+                "C": 5409.0
+            },
+            {
+                "id_alt": "ALT-CAT-1-8",
+                "U": 0.3,
+                "C": 48242.0
+            }
+        ],
+        "CAT-2": [
+            {
+                "id_alt": "ALT-CAT-2-1",
+                "U": 0.36,
+                "C": 45242.0
+            },
+            {
+                "id_alt": "ALT-CAT-2-2",
+                "U": 3.11,
+                "C": 5143.0
+            },
+            {
+                "id_alt": "ALT-CAT-2-3",
+                "U": 1.28,
+                "C": 10683.0
+            },
+            {
+                "id_alt": "ALT-CAT-2-4",
+                "U": 3.11,
+                "C": 5254.0
+            },
+            {
+                "id_alt": "ALT-CAT-2-5",
+                "U": 0.57,
+                "C": 26242.0
+            },
+            {
+                "id_alt": "ALT-CAT-2-6",
+                "U": 0.52,
+                "C": 30350.0
+            },
+            {
+                "id_alt": "ALT-CAT-2-7",
+                "U": 2.75,
+                "C": 5049.0
+            },
+            {
+                "id_alt": "ALT-CAT-2-8",
+                "U": 1.82,
+                "C": 8324.0
+            }
+        ],
+        "CAT-3": [
+            {
+                "id_alt": "ALT-CAT-3-1",
+                "U": 1.15,
+                "C": 14015.0
+            },
+            {
+                "id_alt": "ALT-CAT-3-2",
+                "U": 1.65,
+                "C": 8567.0
+            },
+            {
+                "id_alt": "ALT-CAT-3-3",
+                "U": 2.03,
+                "C": 7729.0
+            },
+            {
+                "id_alt": "ALT-CAT-3-4",
+                "U": 0.94,
+                "C": 15357.0
+            },
+            {
+                "id_alt": "ALT-CAT-3-5",
+                "U": 3.48,
+                "C": 4440.0
+            },
+            {
+                "id_alt": "ALT-CAT-3-6",
+                "U": 1.7,
+                "C": 8855.0
+            },
+            {
+                "id_alt": "ALT-CAT-3-7",
+                "U": 0.69,
+                "C": 20542.0
+            },
+            {
+                "id_alt": "ALT-CAT-3-8",
+                "U": 1.38,
+                "C": 11062.0
+            }
+        ]
+    },
+    "elementos": [
+        {
+            "id_elem": "ELEM-O-1",
+            "tipo": "optimizable",
+            "categoria": "CAT-1",
+            "area": 13.05
+        },
+        {
+            "id_elem": "ELEM-O-2",
+            "tipo": "optimizable",
+            "categoria": "CAT-3",
+            "area": 5.25
+        },
+        {
+            "id_elem": "ELEM-F-1",
+            "tipo": "fijo",
+            "area": 27.09,
+            "U_fijo": 1.3,
+            "C_fijo": 11538.0
+        },
+        {
+            "id_elem": "ELEM-F-2",
+            "tipo": "fijo",
+            "area": 36.69,
+            "U_fijo": 2.69,
+            "C_fijo": 5576.0
+        },
+        {
+            "id_elem": "ELEM-F-3",
+            "tipo": "fijo",
+            "area": 7.48,
+            "U_fijo": 1.32,
+            "C_fijo": 11364.0
+        },
+        {
+            "id_elem": "ELEM-F-4",
+            "tipo": "fijo",
+            "area": 28.41,
+            "U_fijo": 1.27,
+            "C_fijo": 11811.0
+        }
+    ]
+}

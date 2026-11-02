@@ -1,0 +1,24 @@
+# Archivos temporales de LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.xdv
+main.pdf
+build/
+
+# Archivos locales
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store
+Thumbs.db
+.env
+.env.*

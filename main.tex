@@ -1,0 +1,48 @@
+% Documento principal: compilar este archivo desde la raíz del proyecto.
+\documentclass[journal,12pt,onecolumn]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amsfonts,array,booktabs}
+\usepackage{graphicx,float}
+\usepackage{xcolor,listings}
+\usepackage[hidelinks]{hyperref}
+
+\newcommand{\pendiente}[1]{\par\noindent\textcolor{red!65!black}{\textbf{Pendiente:} #1}\par}
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  frame=single,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+           {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+           {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {ü}{{\"u}}1
+}
+
+\begin{document}
+\title{\textit{Informe Entrega 2 -- Grupo 7 -- Paralelo por completar}}
+\author{Mena, Jose, Joaquin y Constanza\\
+Nombres completos y correos por completar\\
+UTFSM Casa Central, Valparaíso, Chile}
+\maketitle
+
+\input{Mena/parte}
+\input{Jose/modelo}
+\input{Jose/parte}
+\input{Joaquin/parte}
+\input{Constanza/parte}
+\input{Mena/conclusiones}
+
+\appendices
+\section{Código completo del generador}
+\pendiente{Jose: el archivo incluido aún corresponde al generador original.
+Corregirlo y revisar que coincida con las instancias definitivas.}
+\lstinputlisting{Jose/generador.py}
+\end{document}

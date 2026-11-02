@@ -1,0 +1,98 @@
+\documentclass[journal, 12pt, onecolumn]{IEEEtran}
+\usepackage[latin1]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[dvips]{graphicx}
+
+\begin{document}
+\title{\textit{Informe Entrega 2 - Paralelo Y - Grupo Z}}
+\author{Nombres integrantes \\ 
+Correos integrantes \\
+UTFSM Casa Central, Valpara\'iso, Chile}
+\maketitle
+
+\section{Introducci\'on}
+Describa en qu\'e consiste el problema, la necesidad que lo motiva, el contexto de
+aplicaci\'on y el objetivo general del proyecto. Incluya los supuestos principales
+adoptados para representar la situaci\'on real. (5 puntos)
+
+\section{Modelamiento del problema}
+Formule expl\'icitamente el modelo matem\'atico utilizando la materia vista en
+clases. El documento debe incluir, como m\'inimo:
+\begin{itemize}
+    \item los conjuntos e \textit{\'indices} utilizados;
+    \item los par\'ametros, sus unidades, fuentes y rangos de valores;
+    \item las variables de decisi\'on y sus dominios (por ejemplo, binarias,
+    enteras o continuas);
+    \item la funci\'on objetivo, indicando si se minimiza o maximiza, y
+    explicando el significado de cada t\'ermino;
+    \item todas las restricciones del modelo, acompa\~nadas de una breve
+    explicaci\'on de su significado f\'isico u operativo;
+    \item las condiciones de dominio y cualquier supuesto adicional necesario.
+\end{itemize}
+(5 puntos)
+
+\section{Generador de Instancias}
+Describa detalladamente el procedimiento de generaci\'on de las \textbf{15
+instancias factibles} solicitadas. Explique:
+\begin{itemize}
+	\item el algoritmo o rutina implementada, incluyendo sus entradas, salidas y
+	par\'ametros configurables;
+	\item las distribuciones, semillas, rangos y dem\'as decisiones usadas para
+	producir aleatoriedad reproducible;
+	\item el tama\~no y la estructura de cada instancia, y la forma en que se
+	almacenan los datos;
+    \item el procedimiento de validaci\'on que comprueba que cada instancia
+    satisface todas las restricciones;
+    \item las condiciones implementadas para garantizar la factibilidad
+    t\'ecnica de las soluciones generadas.
+\end{itemize}
+Incluya una tabla resumen de las 15 instancias y entregue el c\'odigo completo
+del generador. (5 puntos)
+
+\section{Implementaci\'on}
+Explique el solver asignado y la implementaci\'on realizada (por ejemplo,
+lp\_solve o MiniZinc), incluyendo:
+\begin{itemize}
+	\item como el solver realiza la b\'usqueda de la soluci\'on \textbf{\'optima};
+	\item la construcci\'on automatizada del modelo a partir de los datos de
+	entrada;
+	\item el procedimiento para ejecutar y resolver cada instancia;
+	\item los par\'ametros del solver y el criterio de optimalidad utilizado;
+	\item el formato de las soluciones retornadas y las comprobaciones de
+	factibilidad y optimalidad.
+\end{itemize}
+El c\'odigo debe poder parametrizar los datos de entrada, procesar las
+instancias generadas y retornar la soluci\'on \textbf{\'optima} de cada una.
+Entregue el c\'odigo en un archivo independiente.
+(30 puntos)
+
+\section{Resultados}
+Presente un an\'alisis estructurado de los experimentos computacionales sobre
+las 15 instancias, respaldado por gr\'aficos y tablas. Reporte, como m\'inimo,
+los valores de la soluci\'on \textbf{\'optima}, el estado de factibilidad, el
+tiempo de ejecuci\'on y las m\'etricas relevantes del solver.
+
+\subsection{Impacto de los m\'argenes relativos}
+Analice c\'omo afectan los m\'argenes relativos del m\'aximo permitido para la
+demanda energ\'etica y del costo total a la factibilidad, al valor objetivo y al
+espacio de b\'usqueda. Compare escenarios y explique los cambios observados.
+
+\subsection{Desempe\~no computacional}
+Eval\'ue la dimensionalidad de cada instancia, indicando el n\'umero de
+variables binarias y de restricciones, frente al tiempo de ejecuci\'on, los
+nodos explorados y la brecha de optimalidad (\textit{MIP gap}), cuando estas
+m\'etricas est\'en disponibles. Discuta tendencias, casos extremos y posibles
+causas de las diferencias de desempe\~no. (45 puntos)
+
+\section{Conclusiones}
+Actualice las conclusiones de la Entrega 1 a partir de los resultados de esta
+entrega. Resuma los hallazgos sobre el modelo, las instancias y la
+implementaci\'on del solver, indicando la calidad y optimalidad de las
+soluciones obtenidas. Analice el efecto de los m\'argenes relativos sobre la
+factibilidad y el espacio de b\'usqueda, y relacione la dimensionalidad de las
+instancias con el tiempo de ejecuci\'on, los nodos explorados y la brecha de
+optimalidad. (10 puntos)
+
+\end{document}

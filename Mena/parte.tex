@@ -1,0 +1,50 @@
+% !TEX root = ../main.tex
+\section{Introducción}
+
+\subsection{Contexto}
+La eficiencia energética residencial es un desafío prioritario en Chile. Según el enunciado del proyecto, m\'as del 60\,\% de las viviendas carece de un aislamiento térmico adecuado, lo que incrementa los costos de calefacción y el impacto ambiental asociado. A esto se suman las nuevas exigencias de la Calificación Energética de Viviendas (CEV), que hacen necesario contar con herramientas que permitan a propietarios, arquitectos y constructoras tomar decisiones informadas sobre las soluciones térmicas de los muros, techos, pisos, ventanas y puertas de una vivienda.\\
+
+La dificultad de estas decisiones radica en que cada elemento constructivo puede
+materializarse con múltiples alternativas (combinaciones de material y espesor de aislante) que difieren tanto en su desempeño térmico como en su costo, y que ambos criterios están en tensión: una mejor aislación térmica implica, en general, un mayor costo por metro cuadrado.\\
+
+Este proyecto se inspira en una solución real presentada en la Feria de Software
+(FESW) 2025 y desarrollada junto a la oficina de arquitectura Acua Plan (sistema
+\textit{Bio Planner}), que permite al usuario definir los materiales de algunos
+elementos de su vivienda y delegar al sistema la selección del resto desde un
+catálogo técnico, minimizando el costo de inversión.
+
+\subsection{Descripción del Problema}
+Una vivienda se compone de un conjunto de elementos constructivos pertenecientes a distintas categorías (muros perimetrales, techumbre, pisos, ventanas y puertas), cada uno con una superficie conocida. Para cada categoría existe un catálogo de soluciones constructivas, y cada alternativa del catálogo se caracteriza por dos atributos:\\
+\begin{itemize}
+	\item \textbf{transmitancia térmica} $U$, unidad que mide el flujo de calor que atraviesa el elemento por unidad de superficie y de diferencia de temperaturas; un valor menor de $U$ indica un mejor aislamiento y, por lo tanto, menores pérdidas de calor;
+	\item \textbf{costo} por metro cuadrado de material utilizado.\\
+\end{itemize}
+
+Los elementos de la vivienda se clasifican en dos tipos. Los \textit{elementos
+fijos} tienen sus materiales predefinidos por el usuario y el modelo no puede modificarlos. Los \textit{elementos optimizables} (o libres) son aquellos para los cuales el modelo debe seleccionar \textbf{exactamente una} solución constructiva del catálogo.\\
+
+\subsection{Objetivo general}
+El problema consiste en determinar qué alternativa asignar a cada elemento libre de modo que se \textbf{minimice el costo total de inversión en materiales}, asegurando que la transmitancia térmica promedio de la vivienda, ponderada por el área de cada elemento, no supere un umbral máximo permitido $U_{\max}$.\\
+
+Nuestro objetivo general es modelar matemáticamente este problema de selección de materiales para eficiencia energética residencial como un problema de optimización, generar instancias aleatorias, reproducibles y técnicamente coherentes que permitan evaluarlo, y resolverlas mediante técnicas completas utilizando el solver MiniZinc, obteniendo la solución óptima de cada instancia y verificando su factibilidad y optimalidad. Asimismo, se analiza cómo los márgenes relativos del máximo permitido afectan la factibilidad, el valor objetivo y el espacio de búsqueda, y se evalúa el desempeño computacional del solver en función de la dimensión de cada instancia (variables binarias, restricciones, tiempo de ejecución y, cuando estén disponibles, nodos explorados y brecha de optimalidad).
+
+\subsection{Supuestos Utilizados}
+\begin{enumerate}
+  \item La vivienda se representa como un conjunto de elementos constructivos
+        (muros perimetrales, techumbre, pisos, ventanas y puertas), cada uno con
+        una superficie conocida y constante, y perteneciente a una única categoría.
+        
+  \item Los elementos fijos no pueden modificarse, pero su transmitancia y su costo se consideran en el balance global; cada elemento libre recibe exactamente una solución constructiva del catálogo de su categoría.
+  
+  \item El costo considerado es solo el de los materiales por metro cuadrado, expresado en unidades monetarias (u.m.); no se incluyen           instalación, mano de obra, transporte ni disponibilidad de stock.
+        
+  \item Las dimensiones generales de la vivienda (superficie habitable, altura y
+        volumen interior) se reflejan únicamente a través de las áreas de sus
+        elementos.
+        
+  \item Como el enunciado no fija valores numéricos, las áreas, transmitancias,
+        costos y $U_{\max}$ son datos sintéticos definidos por el generador, bajo el criterio de que a mejor aislación (menor $U$) corresponde mayor costo.\\
+\end{enumerate}
+
+Los demás supuestos se describen en su sección correspondiente: los del modelo
+matemático en la Sección II-G y los del generador de instancias en la Sección III.

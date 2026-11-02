@@ -1,0 +1,3 @@
+Muy buen generador, pero tiene algunos detalles, en especial el uso de JSON. Pero tinene algunos detalles, hay algunos casos donde no se cumple que una mayor transmitancia tengo un precio mayor. Además hay que tener cuidado con la generación de las áreas que se generan aleatoriamente sin tener en cuenta alguna coherencia con las dimensiones fisicas de una vivienda.
+
+40/50

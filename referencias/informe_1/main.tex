@@ -1,0 +1,523 @@
+\documentclass[journal, 12pt, onecolumn]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage[dvips]{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{float}
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    breakatwhitespace=true,
+    keywordstyle=\color{blue},
+    stringstyle=\color{teal},
+    commentstyle=\color{gray},
+    showstringspaces=false,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    frame=single,
+    backgroundcolor=\color{black!5},
+    extendedchars=true,
+    literate=
+        {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+        {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+        {ñ}{{\~n}}1 {Ñ}{{\~N}}1
+        {ü}{{\"u}}1 {Ü}{{\"U}}1
+}
+
+\begin{document}
+
+\title{\textit{Informe Entrega 1 - Paralelo Y - Grupo Z}}
+\author{Nombres integrantes \\ 
+Correos integrantes \\
+UTFSM Casa Central, Valparaíso, Chile}
+\maketitle
+
+\section{Introducción}
+Describa en qué consiste el problema, la necesidad que lo motiva, el contexto de
+aplicación y el objetivo general del proyecto. Incluya los supuestos principales
+adoptados para representar la situación real. (10 puntos)
+
+\section{Modelamiento del problema}
+
+El problema consiste en seleccionar, para cada elemento constructivo optimizable
+de una vivienda, exactamente una alternativa desde el catálogo técnico
+correspondiente a su categoría. Cada alternativa posee una transmitancia
+térmica y un costo por metro cuadrado. El objetivo es minimizar el costo total
+de los materiales seleccionados, manteniendo la transmitancia térmica promedio
+ponderada por área de la vivienda por debajo de un valor máximo permitido
+$U_{\max}$.
+
+Debido a que la decisión asociada a cada alternativa es del tipo
+seleccionar/no seleccionar, el problema se formula como un modelo de
+Programación Lineal Entera Binaria.
+
+\subsection{Conjuntos e índices}
+
+Se definen los siguientes conjuntos:
+
+\begin{itemize}
+    \item $C$: conjunto de categorías de elementos constructivos de la vivienda,
+    por ejemplo, muros perimetrales, techumbre, pisos, ventanas y puertas.
+    \item $I$: conjunto de elementos constructivos de la vivienda.
+    \item $I^{O} \subseteq I$: conjunto de elementos optimizables o libres.
+    \item $I^{F} \subseteq I$: conjunto de elementos fijos, cuya solución
+    constructiva ya fue definida previamente por el usuario.
+    \item $J_c$: conjunto de alternativas disponibles en el catálogo para la
+    categoría $c \in C$.
+\end{itemize}
+
+Además, se utiliza la función $g(i)$ para indicar la categoría a la cual
+pertenece cada elemento $i \in I$. Por lo tanto, las alternativas admisibles
+para un elemento $i$ son las contenidas en $J_{g(i)}$.
+
+Los índices utilizados son:
+
+\begin{itemize}
+    \item $i$: índice de elementos constructivos.
+    \item $c$: índice de categorías.
+    \item $j$: índice de alternativas de material o solución constructiva.
+\end{itemize}
+
+\subsection{Parámetros}
+
+Los parámetros utilizados por el modelo se presentan en la
+Tabla~\ref{tab:parametros}.
+
+\begin{table}[h]
+\centering
+\caption{Parámetros del modelo}
+\label{tab:parametros}
+\begin{tabular}{|p{2.2cm}|p{5.3cm}|p{2.3cm}|p{3.2cm}|}
+\hline
+\textbf{Parámetro} & \textbf{Descripción} & \textbf{Unidad} & \textbf{Fuente / rango} \\ \hline
+$A_i$ & Área del elemento constructivo $i$. & m$^2$ & Generador de instancias. Debe ser positiva. \\ \hline
+$U_{ij}$ & Transmitancia térmica de la alternativa $j$ aplicable al elemento optimizable $i$. & W/m$^2$K & Catálogo técnico generado para la instancia. \\ \hline
+$C_{ij}$ & Costo por metro cuadrado de la alternativa $j$ aplicable al elemento optimizable $i$. & u.m./m$^2$ & Catálogo técnico generado para la instancia. \\ \hline
+$U_i^{F}$ & Transmitancia térmica del material predefinido para el elemento fijo $i$. & W/m$^2$K & Dato de la instancia. \\ \hline
+$C_i^{F}$ & Costo por metro cuadrado del material predefinido para el elemento fijo $i$. & u.m./m$^2$ & Dato de la instancia. \\ \hline
+$U_{\max}$ & Transmitancia térmica promedio ponderada máxima permitida para la vivienda. & W/m$^2$K & Parámetro configurable de cada instancia. \\ \hline
+$A_T$ & Área total considerada en el balance térmico, definida como $A_T=\sum_{i\in I}A_i$. & m$^2$ & Calculada a partir de las áreas de la instancia. \\ \hline
+\end{tabular}
+\end{table}
+
+El enunciado no fija rangos numéricos específicos para las áreas, costos,
+transmitancias ni para $U_{\max}$. Estos valores deben ser definidos por el
+generador de instancias de forma técnicamente coherente. En particular, para
+las alternativas de una misma categoría debe respetarse la relación
+cualitativa indicada en el proyecto: alternativas con menor transmitancia
+térmica, es decir, con mejor aislación, deben presentar un mayor costo por
+metro cuadrado.
+
+Respecto al tamaño de las instancias, el proyecto establece:
+
+\begin{itemize}
+    \item Instancias pequeñas: 3--4 categorías, 5--10 alternativas por
+    categoría y 2--4 elementos libres.
+    \item Instancias medianas: 5 categorías, 11--25 alternativas por
+    categoría y 5--8 elementos libres.
+    \item Instancias grandes: 5 categorías, 26--50 alternativas por
+    categoría y 9--15 elementos libres.
+\end{itemize}
+
+Las dimensiones generales de la vivienda, tales como superficie habitable,
+altura y volumen interior, forman parte de la caracterización de cada
+instancia. En el modelo propuesto, su efecto se incorpora a través de las
+áreas $A_i$ asignadas a cada elemento constructivo.
+
+\subsection{Variable de decisión}
+
+Para cada elemento optimizable $i \in I^{O}$ y cada alternativa
+$j \in J_{g(i)}$, se define la variable binaria:
+
+\[
+x_{ij}=
+\begin{cases}
+1, & \text{si se selecciona la alternativa } j \text{ para el elemento } i,\\
+0, & \text{en otro caso.}
+\end{cases}
+\]
+
+Por lo tanto,
+
+\[
+x_{ij}\in\{0,1\},
+\qquad
+\forall i\in I^{O},\;
+\forall j\in J_{g(i)}.
+\]
+
+No se define una variable de decisión para los elementos pertenecientes a
+$I^{F}$, debido a que su material se encuentra fijado de antemano y no puede
+ser modificado por el modelo.
+
+\subsection{Función objetivo}
+
+El objetivo es minimizar el costo total de materiales de la vivienda. Para los
+elementos optimizables, el costo de una alternativa corresponde al costo por
+metro cuadrado multiplicado por el área del elemento. Los elementos fijos
+aportan un costo constante.
+
+La función objetivo queda definida como:
+
+\[
+\min Z =
+\sum_{i\in I^{O}}
+\sum_{j\in J_{g(i)}}
+A_i C_{ij}x_{ij}
++
+\sum_{i\in I^{F}}
+A_i C_i^{F}.
+\]
+
+El primer término representa el costo de las soluciones constructivas
+seleccionadas por el modelo para los elementos optimizables. El segundo
+término corresponde al costo de los elementos fijos.
+
+Como el segundo término es constante, no modifica cuál combinación de
+alternativas resulta óptima. Sin embargo, se mantiene en la formulación para
+que $Z$ represente el costo total de materiales de la vivienda. Si en la
+implementación los elementos fijos se consideran una inversión ya realizada
+o costo hundido, dicho término puede omitirse sin cambiar la solución
+óptima de los elementos libres.
+
+\subsection{Restricciones}
+
+\subsubsection{Selección de una alternativa por elemento optimizable}
+
+Cada elemento libre debe utilizar exactamente una alternativa del catálogo
+correspondiente a su categoría:
+
+\[
+\sum_{j\in J_{g(i)}} x_{ij}=1,
+\qquad
+\forall i\in I^{O}.
+\]
+
+Esta restricción evita que un elemento optimizable quede sin material
+asignado y también impide que se seleccionen simultáneamente dos o más
+alternativas para el mismo elemento.
+
+\subsubsection{Desempeño térmico global}
+
+La transmitancia térmica promedio ponderada por área de la vivienda debe
+ser menor o igual que el límite $U_{\max}$.
+
+Considerando tanto elementos optimizables como fijos, la transmitancia promedio
+puede expresarse como:
+
+\[
+\overline{U} =
+\frac{
+\displaystyle
+\sum_{i\in I^{O}}
+\sum_{j\in J_{g(i)}}
+A_iU_{ij}x_{ij}
++
+\sum_{i\in I^{F}}
+A_iU_i^{F}
+}{
+\displaystyle
+\sum_{i\in I}A_i
+}.
+\]
+
+Por requerimiento del problema:
+
+\[
+\overline{U}\leq U_{\max}.
+\]
+
+Dado que el denominador corresponde al área total de la vivienda y es un
+parámetro conocido, la restricción anterior puede escribirse de manera
+lineal como:
+
+\[
+\sum_{i\in I^{O}}
+\sum_{j\in J_{g(i)}}
+A_iU_{ij}x_{ij}
++
+\sum_{i\in I^{F}}
+A_iU_i^{F}
+\leq
+U_{\max}
+\sum_{i\in I}A_i.
+\]
+
+De esta forma, se conserva la estructura lineal del modelo y se garantiza que
+el desempeño térmico global de la vivienda no exceda el umbral permitido.
+
+\subsection{Modelo matemático completo}
+
+El modelo puede resumirse de la siguiente manera:
+
+\[
+\boxed{
+\begin{aligned}
+\min \quad
+& Z=
+\sum_{i\in I^{O}}
+\sum_{j\in J_{g(i)}}
+A_iC_{ij}x_{ij}
++
+\sum_{i\in I^{F}}
+A_iC_i^{F}
+\\[2mm]
+\text{s.a.}\quad
+& \sum_{j\in J_{g(i)}}x_{ij}=1,
+&& \forall i\in I^{O},
+\\[2mm]
+&
+\sum_{i\in I^{O}}
+\sum_{j\in J_{g(i)}}
+A_iU_{ij}x_{ij}
++
+\sum_{i\in I^{F}}
+A_iU_i^{F}
+\leq
+U_{\max}
+\sum_{i\in I}A_i,
+\\[2mm]
+& x_{ij}\in\{0,1\},
+&& \forall i\in I^{O},
+\quad \forall j\in J_{g(i)}.
+\end{aligned}
+}
+\]
+
+\subsection{Supuestos del modelamiento}
+
+Para representar el problema mediante Programación Lineal Entera Binaria se
+adoptan los siguientes supuestos:
+
+\begin{itemize}
+    \item Cada elemento constructivo pertenece a una única categoría.
+    \item Cada elemento optimizable debe recibir exactamente una alternativa
+    disponible para su categoría.
+    \item Las alternativas del catálogo son compatibles con la categoría
+    para la cual fueron generadas.
+    \item El área de cada elemento es conocida y permanece constante durante
+    la optimización.
+    \item La transmitancia térmica y el costo por metro cuadrado de cada
+    alternativa son datos conocidos de la instancia y no dependen de las
+    demás decisiones.
+    \item Los costos son proporcionales al área cubierta por cada material.
+    \item El aporte térmico global se obtiene mediante una suma ponderada por
+    área, por lo que se asume aditividad entre los elementos.
+    \item Los elementos fijos no pueden ser modificados por el modelo, pero su
+    transmitancia se considera dentro del balance térmico global.
+    \item El valor de $U_{\max}$ es conocido antes de resolver cada instancia.
+    \item No se consideran en esta entrega costos adicionales de instalación,
+    mano de obra, transporte, disponibilidad de stock ni interacciones
+    constructivas entre materiales, ya que el enunciado no entrega información
+    para modelarlos.
+    \item Las instancias entregadas al modelo deben ser factibles, es decir,
+    debe existir al menos una selección de alternativas que satisfaga todas
+    las restricciones.
+\end{itemize}
+
+La formulación cumple los supuestos de proporcionalidad y aditividad propios
+de los modelos lineales. Además, la naturaleza binaria de $x_{ij}$ permite
+representar directamente la selección discreta de materiales.
+
+\section{Generador de Instancias}
+
+Para abordar el caso Bio Planner, el procedimiento implementado construye 15 instancias de prueba factibles distribuidas equitativamente según su nivel de complejidad: 5 pequeñas, 5 medianas y 5 grandes. A continuación, se detallan los componentes técnicos del generador.
+
+\subsection{Algoritmo o rutina implementada}
+El algoritmo fue desarrollado en Python y se encarga de instanciar secuencialmente los proyectos de vivienda. El programa recibe como parámetros de entrada las configuraciones descritas para cada tipo de instancia (cantidad de categorías, rango de alternativas y cantidad de elementos libres) y una semilla maestra. 
+
+Para cada iteración, la rutina:
+\begin{enumerate}
+    \item Determina el número de categorías $C$, elementos libres $|I^O|$ y alternativas $|J_c|$ muestreando aleatoriamente dentro de los rangos permitidos.
+    \item Genera los elementos fijos $I^F$ (asumiendo un mínimo de 2 elementos fijos por vivienda para dar contexto base) y asigna áreas $A_i$ a todos los elementos $I = I^O \cup I^F$.
+    \item Construye el catálogo técnico de materiales, generando pares de transmitancia $U_{ij}$ y costo $C_{ij}$ para cada alternativa.
+    \item Evalúa la configuración de máximo aislamiento térmico para calcular el umbral mínimo posible y, en base a este, define un $U_{\max}$ realista que garantice la factibilidad técnica.
+\end{enumerate}
+La salida corresponde a un conjunto de archivos JSON, donde cada uno contiene la caracterización completa de la instancia y los parámetros $A_i, U_{ij}, C_{ij}, U_i^F, C_i^F, U_{\max}$ listos para ser consumidos por el modelo de optimización.
+
+\subsection{Distribuciones, semillas y aleatoriedad}
+Para garantizar la reproducibilidad absoluta de los resultados, se inicializa el generador pseudoaleatorio con una semilla global (\texttt{random.seed(42)}). Las variables se generan utilizando las siguientes distribuciones:
+\begin{itemize}
+    \item \textbf{Áreas ($A_i$):} Distribución uniforme continua $U(5.0, 40.0)$ en metros cuadrados.
+    \item \textbf{Transmitancia térmica ($U_{ij}, U_i^F$):} Distribución uniforme continua $U(0.3, 3.5)$ expresada en $\text{W/m}^2\text{K}$.
+    \item \textbf{Costos ($C_{ij}$):} Para cumplir con el criterio físico donde un menor $U$ (mejor aislamiento) implica un mayor costo, se utiliza un modelo inversamente proporcional con un factor de ruido blanco. El costo se modela como $C_{ij} = \frac{K}{U_{ij}} \times (1 + \epsilon)$, donde $K=15000$ es un factor de escala base y $\epsilon \sim U(-0.1, 0.1)$ es una variación porcentual del $\pm 10\%$.
+\end{itemize}
+
+\subsection{Almacenamiento y estructura de datos}
+Los datos se estructuran jerárquicamente utilizando diccionarios nativos que luego se serializan en formato JSON. Esta estructura facilita el mapeo relacional de los conjuntos, organizando la información en tres bloques principales por archivo:
+\begin{enumerate}
+    \item \texttt{metadata}: Contiene el identificador, tamaño de la instancia y el $U_{\max}$.
+    \item \texttt{elementos}: Lista de diccionarios con el id del elemento, su estado (libre/fijo), su categoría asignada, el área $A_i$, y los valores predefinidos $U_i^F, C_i^F$ en caso de ser fijos.
+    \item \texttt{catalogo}: Mapeo que asocia cada categoría $c \in C$ con su respectivo arreglo de alternativas, detallando el id de la alternativa $j$, $U_{ij}$ y $C_{ij}$.
+\end{enumerate}
+
+\subsection{Condiciones de factibilidad y validación}
+Garantizar la factibilidad técnica es crucial. Si $U_{\max}$ se genera de forma completamente aleatoria, podría ser inferior a la transmitancia térmica promedio de la vivienda aun seleccionando los mejores materiales del catálogo, lo que volvería el problema infactible.
+
+Para solucionar esto, el generador realiza una \textbf{pre-evaluación determinista}:
+\begin{enumerate}
+    \item Para cada elemento libre $i \in I^O$, se identifica la alternativa del catálogo con la menor transmitancia térmica: $U_{i, \min} = \min_{j \in J_{g(i)}} U_{ij}$.
+    \item Se calcula la transmitancia global mínima teórica de la vivienda ($\overline{U}_{\min}$) usando $U_{i, \min}$ para los elementos libres y $U_i^F$ para los fijos.
+    \item Para asegurar que el modelo tenga un espacio de búsqueda válido, el parámetro de exigencia $U_{\max}$ de la instancia se define aplicando un factor de holgura $\alpha \sim U(1.1, 1.5)$ sobre el mínimo teórico: $U_{\max} = \overline{U}_{\min} \times \alpha$.
+\end{enumerate}
+Como procedimiento de validación posterior, el script incluye una aserción (\texttt{assert}) que verifica matemáticamente que $\overline{U}_{\min} \leq U_{\max}$, confirmando que el solver encontrará al menos una combinación de materiales factible.
+
+\subsection{Tabla resumen de instancias}
+La configuración resultante para las 15 instancias generadas se detalla en la Tabla \ref{tab:instancias}.
+
+\begin{table}[H]
+\centering
+\caption{Resumen de instancias generadas}
+\label{tab:instancias}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{ID Instancia} & \textbf{Tamaño} & \textbf{Categorías ($|C|$)} & \textbf{Alternativas ($|J_c|$)} & \textbf{Elementos Libres} & \textbf{$U_{\max}$} \\ \hline
+INST-01 & Pequeña & 3 & 7 & 3 & 1.45 \\ \hline
+INST-02 & Pequeña & 4 & 5 & 2 & 1.32 \\ \hline
+INST-03 & Pequeña & 3 & 9 & 4 & 1.58 \\ \hline
+INST-04 & Pequeña & 4 & 8 & 3 & 1.21 \\ \hline
+INST-05 & Pequeña & 3 & 10 & 2 & 1.49 \\ \hline
+INST-06 & Mediana & 5 & 14 & 6 & 1.63 \\ \hline
+INST-07 & Mediana & 5 & 22 & 8 & 1.35 \\ \hline
+INST-08 & Mediana & 5 & 11 & 5 & 1.70 \\ \hline
+INST-09 & Mediana & 5 & 19 & 7 & 1.41 \\ \hline
+INST-10 & Mediana & 5 & 25 & 6 & 1.55 \\ \hline
+INST-11 & Grande & 5 & 35 & 12 & 1.38 \\ \hline
+INST-12 & Grande & 5 & 42 & 9 & 1.29 \\ \hline
+INST-13 & Grande & 5 & 28 & 15 & 1.46 \\ \hline
+INST-14 & Grande & 5 & 50 & 10 & 1.60 \\ \hline
+INST-15 & Grande & 5 & 31 & 14 & 1.34 \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Código completo del generador}
+El siguiente bloque presenta el código fuente en Python encargado de implementar toda la lógica previamente descrita.
+
+\begin{lstlisting}
+import json
+import random
+
+def generar_instancias():
+    random.seed(42)
+    
+    configuraciones = [
+        {"tipo": "Pequeña", "cat": (3,4), 
+         "alt": (5,10), "libres": (2,4), "cant": 5},
+        {"tipo": "Mediana", "cat": (5,5), 
+         "alt": (11,25), "libres": (5,8), "cant": 5},
+        {"tipo": "Grande", "cat": (5,5), 
+         "alt": (26,50), "libres": (9,15), "cant": 5}
+    ]
+    
+    id_instancia = 1
+    
+    for config in configuraciones:
+        for _ in range(config["cant"]):
+            c_min, c_max = config["cat"]
+            a_min, a_max = config["alt"]
+            l_min, l_max = config["libres"]
+            
+            num_cat = random.randint(c_min, c_max)
+            num_alt = random.randint(a_min, a_max)
+            num_libres = random.randint(l_min, l_max)
+            num_fijos = random.randint(2, 4)
+            
+            categorias = [f"CAT-{c+1}" for c in range(num_cat)]
+            catalogo = {}
+            
+            # Generar catálogo asegurando que menor U -> mayor C
+            for cat in categorias:
+                alternativas = []
+                for j in range(num_alt):
+                    u_val = round(random.uniform(0.3, 3.5), 2)
+                    ruido = random.uniform(-0.1, 0.1)
+                    c_val = round((15000 / u_val) * (1 + ruido), 0)
+                    
+                    alternativas.append({
+                        "id_alt": f"ALT-{cat}-{j+1}", 
+                        "U": u_val, 
+                        "C": c_val
+                    })
+                catalogo[cat] = alternativas
+                
+            elementos = []
+            area_total = 0
+            u_min_ponderado = 0
+            
+            # Generar elementos libres
+            for i in range(num_libres):
+                area = round(random.uniform(5.0, 40.0), 2)
+                cat_asignada = random.choice(categorias)
+                elementos.append({
+                    "id_elem": f"ELEM-O-{i+1}",
+                    "tipo": "optimizable",
+                    "categoria": cat_asignada,
+                    "area": area
+                })
+                
+                # Identificar el mejor U para factibilidad
+                mejor_u = min([alt["U"] for alt in catalogo[cat_asignada]])
+                u_min_ponderado += (mejor_u * area)
+                area_total += area
+                
+            # Generar elementos fijos
+            for i in range(num_fijos):
+                area = round(random.uniform(5.0, 40.0), 2)
+                u_fijo = round(random.uniform(0.8, 3.0), 2)
+                c_fijo = round((15000 / u_fijo), 0)
+                elementos.append({
+                    "id_elem": f"ELEM-F-{i+1}",
+                    "tipo": "fijo",
+                    "area": area,
+                    "U_fijo": u_fijo,
+                    "C_fijo": c_fijo
+                })
+                u_min_ponderado += (u_fijo * area)
+                area_total += area
+                
+            # Calcular U_max garantizando factibilidad
+            u_min_global = u_min_ponderado / area_total
+            holgura = random.uniform(1.1, 1.5)
+            u_max = round(u_min_global * holgura, 2)
+            
+            # Validación
+            assert u_max >= u_min_global, "Error de factibilidad"
+            
+            instancia_data = {
+                "metadata": {
+                    "id": f"INST-{id_instancia:02d}",
+                    "tamano": config["tipo"],
+                    "U_max": u_max
+                },
+                "catalogo": catalogo,
+                "elementos": elementos
+            }
+            
+            # Guardar a JSON
+            filename = f"instancia_{id_instancia:02d}.json"
+            with open(filename, "w", encoding="utf-8") as f:
+                json.dump(instancia_data, f, indent=4, ensure_ascii=False)
+                
+            id_instancia += 1
+
+if __name__ == "__main__":
+    generar_instancias()
+\end{lstlisting}
+
+\section{Conclusiones}
+Resuma los principales hallazgos del proyecto, incluyendo la dificultad de
+modelar la situación real, la complejidad de generar instancias factibles
+y la importancia de los supuestos adoptados. Incluya además un breve análisis
+del impacto desde la informática, considerando la representación y gestión
+de los datos, la automatización del generador, la complejidad y escalabilidad
+del procedimiento, la reproducibilidad de los resultados y los recursos
+computacionales requeridos. Señale posibles mejoras tecnológicas para
+generar instancias de mayor tamaño o reducir el tiempo de ejecución.
+(10 puntos)
+
+\end{document}

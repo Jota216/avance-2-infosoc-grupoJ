@@ -1,0 +1,68 @@
+name: Compilar informe
+
+on:
+  push:
+    paths:
+      - '**/*.tex'
+      - '**/*.bib'
+      - '**/*.sty'
+      - '**/*.cls'
+      - '**/*.png'
+      - '**/*.jpg'
+      - '**/*.jpeg'
+      - '**/*.pdf'
+      - 'Jose/generador.py'
+      - '.github/workflows/compilar-informe.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: informe-pdf-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pdf:
+    name: Generar PDF
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Descargar el proyecto
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Compilar main.tex
+        uses: xu-cheng/latex-action@6549dc21effb2730855a1281407ecfcececc6c1b # v4
+        with:
+          root_file: main.tex
+          texlive_version: '2025'
+          args: -pdf -interaction=nonstopmode -halt-on-error -file-line-error -outdir=build
+          post_compile: cp build/main.pdf build/informe-2.pdf
+
+      - name: Guardar PDF
+        id: pdf
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: informe-pdf
+          path: build/informe-2.pdf
+          archive: false
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Enlace al PDF
+        env:
+          PDF_URL: ${{ steps.pdf.outputs.artifact-url }}
+        run: |
+          printf '### Informe compilado\n\n[Descargar PDF actualizado](%s)\n' "$PDF_URL" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Guardar registro de compilación
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: compilacion-log
+          path: build/main.log
+          if-no-files-found: ignore
+          retention-days: 7
+
