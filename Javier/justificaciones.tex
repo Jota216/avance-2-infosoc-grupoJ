@@ -1,125 +1,88 @@
-% !TEX root = ../main.tex
-% ==============================================================================
-% SECCIÓN 4 (CONTINUACIÓN): JUSTIFICACIÓN DETALLADA Y COTIZACIONES
-% Responsable: Javier (Analista Financiero / Complejidad Media)
-% En coordinación directa con: Joaquín (Presupuesto Maestro), Jose (Gantt) y Coni (Edición)
-% ==============================================================================
 
 \subsection{Criterios de Austeridad, Pertinencia y Transparencia Económica}
 \label{sec:justificaciones}
 
-La asignación de los \$15.200.000~CLP presupuestados para el proyecto \textit{Bio Planner} no responde a estimaciones genéricas o arbitrarias, sino a un modelo de ingeniería económica gobernado por tres principios rectores:
+La asignación de los \$1.160.000~CLP solicitados para el proyecto \textit{Campus Zero} se fundamenta en un modelo de ingeniería económica regido por tres principios clave:
 
 \begin{enumerate}
-    \item \textbf{Criterio de Austeridad y Eficiencia del Gasto:} Se prioriza de manera estricta la inversión en capital humano e instrumental científico de alta durabilidad, reduciendo al mínimo los gastos fungibles o administrativos. En materia de software, se adoptan exclusivamente tecnologías y librerías de código abierto (\textit{Python}, \textit{MiniZinc}, marcos web abiertos), evitando el pago recurrente de licencias comerciales propietarias. Asimismo, para el cómputo intensivo del motor de optimización, se contrata infraestructura en la nube bajo demanda por la duración estricta del proyecto (8 meses), eludiendo la adquisición de servidores físicos costosos cuya depreciación y obsolescencia tecnológica atentarían contra la sostenibilidad del proyecto.
+    \item \textbf{Criterio de Austeridad y Eficiencia:} Se excluye el pago de honorarios, sueldos o licencias, priorizando la inversión en capital físico inventariable para la universidad. Para la programación de los microcontroladores, se utilizarán entornos de código abierto (\textit{Arduino IDE / C++}).
     
-    \item \textbf{Criterio de Pertinencia Socio-Técnica:} Cada desembolso se encuentra directamente vinculado a la resolución matemática del problema de envolventes térmicas formulado en la Fase~2 y a la interacción con la realidad geográfica de los cerros de Valparaíso. El instrumental de diagnóstico (cámara infrarroja y sensores) responde a la necesidad imperativa de alimentar el modelo con parámetros térmicos reales (transmitancia $U$, puentes térmicos y variaciones de temperatura interior), mientras que las partidas de terreno y difusión aseguran que la tecnología no sea una abstracción de laboratorio, sino una herramienta de empoderamiento habitacional para familias vulnerables.
+    \item \textbf{Criterio de Pertinencia Socio-Técnica:} Cada componente resuelve empiricamente el derroche estimado en 171,6~kWh/mes. Los sensores y relés garantizan el corte autónomo sin afectar equipos informáticos, y los medidores no invasivos permiten auditar el ahorro real exigido en los objetivos.
     
-    \item \textbf{Criterio de Transparencia y Trazabilidad de Costos:} Todos los costos unitarios utilizados en la Tabla~\ref{tab:presupuesto_maestro} se fundamentan en cotizaciones formales de mercado vigentes al año 2026 en proveedores nacionales de la Región de Valparaíso y la Región Metropolitana, complementadas con tablas arancelarias de referencia del Colegio de Ingenieros de Chile y los estándares para proyectos de innovación pública de ANID/CORFO.
+    \item \textbf{Criterio de Transparencia y Trazabilidad de Costos:} Los costos unitarios provienen de cotizaciones reales del mercado nacional vigente, descartando sobreprecios o estimaciones arbitrarias.
 \end{enumerate}
+
+\vspace{-0.2cm}
 
 \subsection{Justificación Detallada por Categoría e Ítem Presupuestario}
 
-A continuación, se desglosa la justificación técnica, operacional y social de cada uno de los 16 ítems que componen el presupuesto maestro:
+\begin{itemize}
+    \item \textbf{Categoría A: Equipamiento e Infraestructura Técnica} \\
+    Concentra el núcleo tecnológico del sistema para automatizar 5 salas de estudio.
 
-\subsubsection{Categoría A: Recursos Humanos y Personal Técnico (\$9.300.000 -- 61,18\%)}
-Esta categoría constituye la inversión medular del proyecto, asegurando el desarrollo algorítmico, el diseño de la plataforma y el acompañamiento territorial especializado:
+    \begin{itemize}
+        \textbf{A.1. Microcontroladores ESP32 Wi-Fi:} Procesa señales de sensores y ejecuta el algoritmo de desconexión tras 10 minutos de inactividad. Envía métricas de consumo para auditoría.
+        
+        \textbf{A.2. Sensores de Presencia PIR:} Se contemplan 2 por sala para garantizar una cobertura perimetral completa sin puntos ciegos, evitando apagados falsos.
+        
+        \textbf{A.3. Módulos Relés de Estado Sólido SSR:} Son 2 por sala, interrumpen la corriente sin generar chispas ni desgaste.
+        
+        \textbf{A.4. Medidores de Corriente SCT-013:} Registran kWh consumidos antes y después de la intervención sin pelar cables ni intervenir la red de fuerza.
+        
+        \textbf{A.5. Gabinetes Ignífugos IP65:} Resguardarán el hardware cumpliendo la normativa de seguridad institucional. \\
+    \end{itemize}
+    
+    \vspace{-0.3cm}
 
-\begin{description}
-    \item[A.1. Líder de Modelamiento y Algoritmos (6 meses a \$650.000/mes = \$3.900.000):] 
-    Ingeniero/a Civil Informático/a con especialización en investigación de operaciones y programación entera mixta. Responsable del diseño formal del modelo en \textit{MiniZinc/Python}, formulación de funciones de costo y balance térmico ponderado por área ($\sum A_i U_i \le U_{\max} \sum A_i$), linealización de restricciones y optimización del rendimiento en instancias pequeñas, medianas y grandes. Su dedicación semestral cubre la ruta crítica de las actividades A-05 y A-08 de la Carta Gantt.
+    \item \textbf{Categoría B: Operaciones e Insumos de Instalación}
+        Provee el soporte físico y los estándares de seguridad necesarios para la fase de montaje:
+        
+    \begin{itemize}      
+        \textbf{B.1. Insumos Eléctricos y Cableado:} Garantiza un montaje limpio y sin riesgo de cortocircuitos.
+            
+        \textbf{B.2. Kits de Protección Personal EPP:} Dotación de seguridad para asegurar el cumplimiento de protocolos de prevención de riesgos.\\
+    \end{itemize}
     
-    \item[A.2. Desarrollador Full-Stack Web (5 meses a \$600.000/mes = \$3.000.000):] 
-    Ingeniero/a de software encargado de construir la arquitectura cliente-servidor de la plataforma \textit{Bio Planner}. Desarrolla una interfaz web limpia, intuitiva y accesible para dirigentes vecinales y técnicos municipales, integrándola de forma asíncrona con el motor de optimización mediante APIs REST y módulos interactivos de carga de dimensiones habitacionales. Cubre las actividades A-05 y A-08.
-    
-    \item[A.3. Asesor Técnico en Eficiencia Energética (40 horas a \$25.000/hora = \$1.000.000):] 
-    Arquitecto/a o Ingeniero/a Constructor especialista en acondicionamiento térmico y bioclimático. Asesora la estructuración del catálogo de materiales, define los valores certificados de transmitancia térmica ($U$, en W/m$^2$K) según la norma chilena NCh853 y calibra los umbrales exigidos para la Zona Térmica 3 (Valparaíso Litoral) según el artículo 4.1.10 de la OGUC y la Calificación Energética de Viviendas (CEV). Actúa puntualmente en las fases A-01 y A-05.
-    
-    \item[A.4. Coordinador Territorial y Comunitario (4 meses a \$350.000/mes = \$1.400.000):] 
-    Profesional de las ciencias sociales o vinculación comunitaria. Responsable de articular la relación con las juntas de vecinos de los cerros de Valparaíso, gestionar las convocatorias vecinales, coordinar las visitas a viviendas piloto y moderar las mesas de co-diseño participativo en conjunto con la oficina técnica Acua Plan (actividades A-02 y A-07 de la Gantt).
-\end{description}
+        \vspace{-0.3cm}
+        
+    \item \textbf{Categoría C: Difusión y Replicabilidad}
+    Asegura la escalabilidad del proyecto y la educación energética:
+        
+    \begin{itemize}
+        \textbf{C.1. Placas de Acrílico Informativas:} Señalética en el acceso de las 5 salas para informar sobre eficiencia energética e incentivar el cambio cultural. \\
+            
+        \textbf{C.2. Impresión de Manuales Técnicos:} Guía técnica final con diagramas y códigos para que Infraestructura USM pueda replicar el sistema.
+    \end{itemize}
+\end{itemize}
 
-\subsubsection{Categoría B: Equipamiento e Infraestructura Tecnológica (\$2.500.000 -- 16,45\%)}
-Garantiza el instrumental científico de recolección de datos y la capacidad computacional para ejecutar el optimizador:
-
-\begin{description}
-    \item[B.1. Cámara Termográfica Infrarroja (1 unidad a \$1.350.000):] 
-    Equipo de termografía portátil de alta resolución radiométrica ($160 \times 120$ píxeles térmicos, rango $-20^\circ$C a $400^\circ$C, conectividad WiFi/nube). Permite diagnosticar con exactitud científica los puentes térmicos en uniones muro-techumbre, fisuras perimetrales e infiltraciones en ventanas de las viviendas diagnosticadas en terreno, proporcionando datos empíricos para validar las soluciones constructivas propuestas por el solver. Una vez concluido el proyecto, el equipo permanecerá como bien inventariable de transferencia en los laboratorios de la UTFSM.
-    
-    \item[B.2. Sensores Ambientales Datalogger (3 kits a \$150.000/kit = \$450.000):] 
-    Dispositivos autónomos con sensores calibrados de temperatura ambiental y humedad relativa con memoria interna y registro USB/Bluetooth. Se instalan en las viviendas piloto durante periodos representativos (7 a 14 días) para contrastar la curva higrotérmica real interior frente a la proyectada por el software antes y después de simular las mejoras constructivas (actividad A-08).
-    
-    \item[B.3. Servidor Cloud para Computación (8 meses a \$65.000/mes = \$520.000):] 
-    Arriendo mensual de una instancia virtual dedicada de alto rendimiento computacional en la nube (\textit{AWS EC2 c6i.xlarge} o equivalente en \textit{DigitalOcean CPU-Optimized}, con 4 vCPUs y 8~GB de memoria RAM). Provee la capacidad de procesamiento concurrente necesaria para resolver modelos de programación entera sin saturar los recursos de los equipos clientes, cubriendo el ciclo completo de desarrollo, pruebas piloto y evaluación final (Semanas 5 a 15).
-    
-    \item[B.4. Dominio Web, SSL y Licenciamiento (1 paquete global a \$180.000):] 
-    Adquisición y mantención del dominio institucional \texttt{.cl} registrado ante NIC Chile por dos años (\$20.000), certificados de seguridad SSL Wildcard con cifrado TLS~1.3 (\$80.000) y provisión para servicios complementarios de despliegue y repositorios seguros (\$80.000), garantizando la protección de los datos catastrales de las familias beneficiarias.
-\end{description}
-
-\subsubsection{Categoría C: Operaciones, Terreno y Logística (\$1.750.000 -- 11,51\%)}
-Provee el soporte logístico indispensable para las faenas de campo en la compleja topografía urbana de Valparaíso:
-
-\begin{description}
-    \item[C.1. Viáticos y Traslados a Terreno (20 visitas a \$45.000/visita = \$900.000):] 
-    Financiamiento de movilización local, combustible y traslados para desplazar la cuadrilla técnica (ingenieros, arquitectos y articuladores comunitarios) junto al instrumental de medición hacia sectores de difícil acceso en los cerros de Valparaíso (Cerro Cordillera, Playa Ancha, Rodelillo, entre otros). Considera 20 jornadas de campo planificadas en el marco de las actividades A-07 y A-08.
-    
-    \item[C.2. Elementos de Protección Personal - EPP (4 sets a \$70.000/set = \$280.000):] 
-    Dotación reglamentaria de seguridad laboral para los 4 integrantes de la cuadrilla de terreno: calzado de seguridad dieléctrico con suela antideslizante, casco de protección industrial con barbiquejo, chaleco geólogo de alta visibilidad con reflectantes y antiparras de protección. Garantiza inspecciones seguras en entretechos, cubiertas y estructuras autoconstruidas con riesgos de derrumbe o clavos expuestos.
-    
-    \item[C.3. Muestrarios Didácticos de Aislantes (6 kits a \$60.000/kit = \$360.000):] 
-    Maletines pedagógicos con probetas físicas reales y cortes transversales de materiales aislantes disponibles en el mercado chileno (lana mineral, poliestireno expandido, placas de celulosa, paneles sándwich y muestras de doble vidriado hermético DVH), rotulados con sus respectivas transmitancias térmicas ($U$) y costos referenciales por metro cuadrado. Permiten a los vecinos interactuar táctilmente con las alternativas en los talleres vecinales, desmitificando conceptos técnicos abstractos.
-    
-    \item[C.4. Insumos Técnicos de Oficina y Fichas (1 paquete global a \$210.000):] 
-    Impresión encuadernada de fichas técnicas de levantamiento arquitectónico, tablas de toma de datos termográficos, formularios de consentimiento informado ético para los propietarios de viviendas y carpetas formales para la entrega individualizada de los informes de recomendación térmica a cada familia diagnosticada.
-\end{description}
-
-\subsubsection{Categoría D: Materiales de Difusión y Vinculación Comunitaria (\$1.650.000 -- 10,86\%)}
-Consolida la apropiación ciudadana, la educación comunitaria y el cierre institucional del proyecto:
-
-\begin{description}
-    \item[D.1. Guías Ciudadanas de Aislación Térmica (300 unidades a \$2.500/u = \$750.000):] 
-    Diseño e impresión profesional de 300 ejemplares de un manual ciudadano a todo color (16 páginas en papel couché de 170~g con encuadernación corcheteada). Expone en lenguaje cercano principios de ahorro energético, consejos para evitar condensación interior y el paso a paso para utilizar la plataforma \textit{Bio Planner}. Se distribuyen de forma gratuita en sedes vecinales, consultorios y colegios de los sectores intervenidos.
-    
-    \item[D.2. Coffee Break y Logística de 3 Talleres (3 jornadas a \$120.000/jornada = \$360.000):] 
-    Contratación de servicios locales de alimentación comunitaria (cafetería, jugos, sándwiches y fruta) para atender a 25--30 vecinos y dirigentes en cada una de las tres jornadas participativas realizadas en sedes sociales comunitarias de Valparaíso (actividad A-07 de la Gantt). Fomenta un clima de acogida, diálogo constructivo y corresponsabilidad.
-    
-    \item[D.3. Pendones Roller y Material Gráfico (4 unidades a \$60.000/u = \$240.000):] 
-    Estructuras autoenrollables de aluminio ($80 \times 200$~cm) con gráfica de alta definición en tela PVC opaca. Se utilizan para señalizar las jornadas de terreno, difundir el proyecto en ferias científicas de la UTFSM y apoyar visualmente la presentación final de resultados ante autoridades del MINVU y municipios asociados.
-    
-    \item[D.4. Cápsulas Audiovisuales de Transferencia (2 videos a \$150.000/video = \$300.000):] 
-    Producción, edición y sonorización profesional de dos cápsulas de divulgación digital en formato de alta definición (duración 2 a 3 minutos). La primera cápsula explica didácticamente el funcionamiento del optimizador algorítmico, mientras que la segunda documenta los testimonios de las familias y la mejora sustancial en confort térmico lograda en las viviendas piloto. Ambas piezas quedarán alojadas en plataformas de acceso libre para replicabilidad nacional.
-\end{description}
+\newpage
 
 \subsection{Cotizaciones Formales y Respaldo de Precios de Mercado}
 
-Para fundamentar la razonabilidad económica de los costos unitarios plasmados en el presupuesto y resguardar la viabilidad financiera del proyecto ante el comité evaluador, la Tabla~\ref{tab:cotizaciones_mercado} sintetiza las fuentes comerciales formales y los parámetros de referencia de mercado levantados durante la Actividad A-03 de la Carta Gantt:
+Para fundamentar la razonabilidad económica y viabilidad financiera, la Tabla~\ref{tab:cotizaciones_mercado} sintetiza las fuentes comerciales formales levantadas:
 
 \begin{table}[htbp]
 \centering
-\small
-\renewcommand{\arraystretch}{1.2}
-\caption{Resumen de Cotizaciones Comerciales y Fuentes de Mercado (Valores en CLP).}
+\footnotesize
+\renewcommand{\arraystretch}{1.05}
+\caption{Resumen de Cotizaciones Comerciales y Fuentes de Mercado.}
 \label{tab:cotizaciones_mercado}
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.8cm} >{\raggedright\arraybackslash}p{2.6cm} >{\raggedright\arraybackslash}X >{\centering\arraybackslash}p{2.0cm} >{\raggedleft\arraybackslash}p{2.0cm}}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.6cm} >{\raggedright\arraybackslash}p{2.4cm} >{\raggedright\arraybackslash}X >{\centering\arraybackslash}p{1.8cm} >{\raggedleft\arraybackslash}p{1.8cm}}
 \toprule
-\textbf{Ítem Presupuestado} & \textbf{Proveedor / Fuente} & \textbf{Especificación / Referencia Comercial} & \textbf{Condición} & \textbf{Costo Ref. (\$)} \\
+\textbf{Ítem} & \textbf{Proveedor} & \textbf{Especificación} & \textbf{Condición} & \textbf{Costo Ref.} \\
 \midrule
-A.1--A.2 Desarrollo Software & Colegio de Ingenieros & Arancel de referencia profesional informática / jornada parcial & Honorario mensual & \$600.000--\$650.000 \\
-A.3 Asesoría Térmica & Mercado consultoría & Honorario por hora consultor acústico-térmico certificado CEV & Valor hora neto & \$25.000 / h \\
-A.4 Coordinador Territorial & Estándares ANID & Personal técnico de apoyo territorial en proyectos Fondef/Ciencia Pública & Honorario mensual & \$350.000 / mes \\
-B.1 Cámara Termográfica & Instrumatek / FLIR Chile & FLIR C5 compacta, $160 \times 120$ IR, pantalla táctil, nube Ignite & Precio lista c/IVA & \$1.349.990 \\
-B.2 Sensores Datalogger & Equipos y Sensores SpA & Termohigrómetro Elitech RC-51H USB calibrado (Kit $\times$ 3) & Cotización c/IVA & \$150.000 / kit \\
-B.3 Servidor Cloud & AWS / DigitalOcean & AWS EC2 c6i.xlarge (4 vCPUs, 8 GB RAM, Linux) reserva 8 meses & Tarifa estándar & \$65.000 / mes \\
-B.4 Dominio y Certificados & NIC Chile / DigiCert & Dominio .cl por 2 años (\$20.000) + Certificado SSL Wildcard TLS 1.3 & Factura formal & \$180.000 pack \\
-C.1 Traslados Terreno & Furgones Valparaíso & Arriendo por jornada con chofer y combustible hacia cerros altos & Tarifa servicio & \$45.000 / viaje \\
-C.2 Equipamiento EPP & Sodimac Constructor & Pack 3M: Calzado dieléctrico, casco V-Gard, chaleco geólogo, lentes & Cotización formal & \$69.990 / set \\
-C.3 Muestrarios Aislantes & Distribuidora Volcán & Cortes de lana vidrio, poliestireno expandido, placas yeso-cartón & Insumos muestrario & \$60.000 / kit \\
-D.1 Guías Ciudadanas & Imprenta Valparaíso & 300 ejemplares 16 págs. color couché 170 g corcheteado al lomo & Cotización formal & \$2.500 / u \\
-D.2 Logística Talleres & Banquetería Comunitaria & Servicio de coffee break 30 personas en sedes vecinales cerros & Tarifa comunitaria & \$120.000 / jorn. \\
-D.3 Pendones Roller & Gráfica Bellavista & Pendón roller aluminio $80 \times 200$ cm tela PVC full color & Cotización formal & \$59.990 / u \\
-D.4 Cápsulas Audiovisuales & Productora Audiovisual & Registro en terreno, edición, locución y masterización de cápsula & Valor proyecto & \$150.000 / video \\
+A.1 Microcontrolador & MCI Electronics & ESP32 NodeMCU Wi-Fi integrado & c/IVA & \$14.990 / u \\
+A.2 Sensores PIR & Casa Royal & Detector infrarrojo HC-SR501 & c/IVA & \$11.990 / u \\
+A.3 Módulos de Relés & Olimex Chile & SSR 5V a 220V/2A silencioso & Cot. formal & \$17.990 / u \\
+A.4 Medidor Corriente & Naylamp Mech. & Sensor SCT-013 30A/1V pinza & c/IVA & \$14.500 / u \\
+A.5 Gabinetes IP65 & Sodimac Const. & Caja sobrepuesta Lexo ignífuga & Retail & \$24.990 / u \\
+B.1 Insumos Eléctricos & Daroch Eléctrica & Cable libre halógenos, Wago, canaletas & Global & \$150.000 \\
+B.2 Kit EPP & Sodimac Const. & Guantes dieléctricos 00, lentes & Cot. formal & \$44.990 / set \\
+C.1 Señalética Acrílica & Gráfica Valpso. & Placa acrílica $20 \times 15$ cm & Cot. formal & \$23.990 / u \\
+C.2 Manuales Técnicos & Imprenta Univ. & 30 ejemplares color couché 130 g & Cot. formal & \$4.990 / u \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-Como se observa, todos los valores unitarios presentan una estricta concordancia con los precios reales de adquisición en el mercado local y nacional chileno. Esta rigurosidad metodológica garantiza que no existan sobrecostos, subestimaciones de gastos operacionales ni desequilibrios financieros, asegurando que el proyecto \textit{Bio Planner} cuente con un respaldo técnico impecable para adjudicarse los fondos y cumplir cabalmente con los criterios del nivel Destacado de la rúbrica institucional.
+\vspace{0.1cm}
+\noindent\small Todos los valores coinciden exactamente con los precios de mercado actuales en Chile. Como \textit{Campus Zero} invierte únicamente en hardware e insumos reales, el financiamiento pedido es un activo claro y concreto.
