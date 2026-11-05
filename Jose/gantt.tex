@@ -1,75 +1,75 @@
 % !TEX root = ../main.tex
 % ==============================================================================
 % SECCIÓN 3: PLAN DE ACTIVIDADES / CARTA GANTT
-% Responsable: Jose (Líder Técnico - Complejidad Alta)
+% Responsable: Jose Astudillo (Líder Técnico - Complejidad Alta)
+% Proyecto: Campus Zero - Control Automatizado de Iluminación y Climatización
 % ==============================================================================
 
 \section{Plan de Actividades y Carta Gantt}
 \label{sec:gantt}
 
-\subsection{Introducción Metodológica y Enfoque de Planificación}
-La materialización efectiva de la propuesta formulada en el Avance~1 exige una transición estructurada desde las definiciones conceptuales hacia un plan de acción operacional, viable y financiable. Para ello, la planificación del proyecto se articula bajo un enfoque metodológico híbrido que combina la previsibilidad de una gestión por etapas (\textit{stage-gate}) con la agilidad requerida en el despliegue técnico y la vinculación comunitaria.
+\subsection{Introducción Metodológica y Alineación con Objetivos Específicos}
+La materialización del proyecto \textit{Campus Zero: Control Automatizado de Iluminación y Climatización de Salas} exige traducir el diseño conceptual y los compromisos formulados en el Primer Avance en una hoja de ruta operacional, realista y financiable dentro del tope de \textbf{\$1.250.000~CLP} de la línea de \textbf{Sustentabilidad y Medio Ambiente}. Para intervenir las cinco salas de estudio piloto en Casa Central (reduciendo el desperdicio eléctrico estimado en $0{,}26$~kW por sala durante 3 horas diarias de desocupación, equivalente a $85{,}8$~kWh/mes), la planificación se estructura en un horizonte semestral de \textbf{15 semanas efectivas}, dividido en tres fases secuenciales y solapadas que dan cumplimiento estricto a los plazos máximos de los cuatro Objetivos Específicos (OE1 a OE4):
 
-El horizonte temporal del proyecto se proyecta en un ciclo semestral de 15 semanas de ejecución, estructurado rigurosamente en tres fases cardinales:
 \begin{enumerate}
-    \item \textbf{Fase I: Planificación y Validación Inicial (Semanas 1 a 5):} Comprende la formalización de requerimientos, la delimitación técnica del alcance, el mapeo de actores clave territoriales y el levantamiento exhaustivo de cotizaciones comerciales para fundamentar la viabilidad presupuestaria preliminar.
-    \item \textbf{Fase II: Desarrollo y Ejecución Técnico-Social (Semanas 5 a 11):} Constituye el núcleo productivo, donde se ejecuta el desarrollo modular de la solución de ingeniería en paralelo con el modelamiento financiero maestro y el despliegue de instancias de co-diseño y validación comunitaria en terreno.
-    \item \textbf{Fase III: Pruebas, Evaluación y Cierre (Semanas 11 a 15):} Abarca el aseguramiento de calidad mediante pruebas operacionales, la auditoría y rendición financiera integral, y la consolidación editorial del informe de transferencia conforme a los estándares reglamentarios.
+    \item \textbf{Fase I: Diseño Electrónico, Adquisiciones y Línea Base (Semanas 1 a 5 --- OE1 y base OE3):} Cumple el plazo máximo de 5 semanas desde la adjudicación establecido en el \textbf{OE1} para diseñar el esquema de control, gestionar el apoyo técnico y descuento del 15\% con \textit{MCI Electronics}, adquirir los equipos inventariables (microcontroladores ESP32, sensores duales PIR y radar mmWave de 24~GHz, relés optoacoplados e instrumentación) y validar los módulos en banco de pruebas. En paralelo, adelanta el registro del consumo eléctrico previo (\textit{ex-ante}) requerido por el \textbf{OE3}.
+    \item \textbf{Fase II: Montaje Eléctrico, Calibración en Terreno y Señalética (Semanas 6 a 9 --- OE2 y avance OE4):} Satisface el plazo máximo de 4 semanas tras la recepción de materiales fijado en el \textbf{OE2} para instalar y calibrar los módulos en las 5 salas seleccionadas bajo normativa SEC (RIC N.º~04 y N.º~05), programando el corte automático de luminarias ($0{,}16$~kW) y extractores de aire ($0{,}10$~kW) tras \textbf{10 minutos continuos sin presencia}, sin intervenir enchufes ni computadores para evitar pérdidas de datos. Incorpora en paralelo la señalética educativa en cada recinto.
+    \item \textbf{Fase III: Medición Comparativa, Auditoría y Transferencia Replicable (Semanas 10 a 15 --- OE3 y OE4):} Ejecuta las 4 semanas de prueba y contraste empírico del \textbf{OE3} (Semanas 10 a 13) para verificar una reducción de al menos un 50\% del consumo en periodos de desocupación, e integra entre las Semanas 11 y 15 los entregables del \textbf{OE4}: auditoría operativa, rendición financiera, inventario de activos para la USM y guía técnica estandarizada para replicar el sistema en el campus.
 \end{enumerate}
 
-\subsection{Cronograma Maestro de Actividades}
-A continuación, la Tabla~\ref{tab:gantt-actividades} detalla el conjunto de las 11 actividades clave que configuran la ruta de trabajo del equipo. Cada actividad cuenta con dependencias lógicas formalizadas, estimación de duración en semanas, asignación nominal de responsable principal e identificación de su correspondiente hito o producto entregable medible.
+\subsection{Cronograma Maestro de Actividades (Carta Gantt)}
+La Tabla~\ref{tab:gantt-actividades} detalla las \textbf{11 actividades clave} del proyecto, especificando su vinculación con cada Objetivo Específico, dependencias lógicas (predecesoras), programación temporal, responsable principal e hito verificable junto a los recursos asociados del Presupuesto Maestro (Sección~\ref{sec:presupuesto}).
 
-\begin{table}[H]
+\begin{table}[htbp]
 \centering
-\small
-\renewcommand{\arraystretch}{1.22}
-\caption{Plan de Actividades Maestro y Carta Gantt del Proyecto.}
+\scriptsize
+\renewcommand{\arraystretch}{1.20}
+\caption{Plan de Actividades Maestro y Carta Gantt del Proyecto \textit{Campus Zero} (Horizonte: 15 Semanas).}
 \label{tab:gantt-actividades}
-\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{0.8cm} >{\raggedright\arraybackslash}p{1.4cm} >{\raggedright\arraybackslash}X >{\centering\arraybackslash}p{1.2cm} >{\centering\arraybackslash}p{1.5cm} >{\raggedright\arraybackslash}p{1.6cm} >{\raggedright\arraybackslash}p{3.8cm}}
+\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{0.65cm} >{\centering\arraybackslash}p{1.25cm} >{\raggedright\arraybackslash}X >{\centering\arraybackslash}p{0.95cm} >{\centering\arraybackslash}p{1.45cm} >{\centering\arraybackslash}p{1.35cm} >{\raggedright\arraybackslash}p{4.1cm}}
 \toprule
-\textbf{ID} & \textbf{Fase} & \textbf{Actividad Clave} & \textbf{Pred.} & \textbf{Plazo} & \textbf{Responsable} & \textbf{Hito / Entregable} \\
+\textbf{ID} & \textbf{Fase / OE} & \textbf{Actividad Clave del Proyecto} & \textbf{Pred.} & \textbf{Plazo} & \textbf{Resp.} & \textbf{Hito Verificable y Recursos Asociados} \\
 \midrule
-\multicolumn{7}{l}{\cellcolor{black!5}\textbf{\textit{Fase I: Planificación y Validación Inicial (Semanas 1 a 5)}}} \\
+\multicolumn{7}{l}{\cellcolor{gray!18}\textbf{\textit{Fase I: Diseño Electrónico, Adquisiciones y Línea Base (Semanas 1 a 5 --- Plazo máx. OE1: 5 semanas)}}} \\
 \midrule
-A-01 & Fase I & Levantamiento de requerimientos y coherencia técnica con Fase~2. & --- & Sem. 1--2 (2 sem) & Jose & Matriz de requerimientos técnicos y alcance de ingeniería consolidado. \\
-A-02 & Fase I & Mapeo y caracterización de actores territoriales e institucionales. & --- & Sem. 1--3 (3 sem) & Mena & Catálogo de actores clave y protocolo de vinculación comunitaria. \\
-A-03 & Fase I & Levantamiento de cotizaciones comerciales y base de costos unitarios. & A-01 & Sem. 2--4 (3 sem) & Javier & Repositorio de cotizaciones formales y matriz de costos unitarios. \\
-A-04 & Fase I & Gestión, negociación y formalización de alianzas de asociatividad. & A-02 & Sem. 3--5 (3 sem) & Anais & Borrador formalizado de carta de apoyo simulada e institucional. \\
+A-01 & Fase I (OE1) & Levantamiento eléctrico en las 5 salas piloto y coordinación técnica con la DGI-USM para aislar circuitos de luces y extractores de la red de PCs. & --- & Sem. 1--2 (2 sem) & Jose & Esquemas unilineales por sala y autorización de intervención en tableros/cielo falso. \\
+A-02 & Fase I (OE1) & Activación de alianza con \textit{MCI Electronics} (15\% dcto.) y compra de componentes electrónicos, medidores, materiales SEC y banco de pruebas. & --- & Sem. 1--3 (3 sem) & Javier & Órdenes de compra emitidas y recepcionadas (Cat.~1, 2, 3 y 5; \$1.018.680 ejecutados). \\
+A-03 & Fase I (OE1, OE3) & Medición de línea base (\textit{ex-ante}) del consumo eléctrico y ambiental en las 5 salas para contrastar el supuesto de 3~h/día de derroche fantasma. & A-01 & Sem. 2--5 (4 sem) & Mena & Perfil base de carga (kWh/mes) registrado con analizadores PZEM-004T, MicroSD y pinza SEC (Cat.~2). \\
+A-04 & Fase I (OE1) & Diseño de firmware C++ (corte a los 10~min sin presencia), sesión de validación con \textit{MCI Electronics} y armado de 6 nodos en laboratorio. & A-01, A-02 & Sem. 3--5 (3 sem) & Jose & 5 módulos autónomos (ESP32 + PIR + mmWave + relés) + 1 backup probados en banco (Cat.~1 y 5). \\
 \midrule
-\multicolumn{7}{l}{\cellcolor{black!5}\textbf{\textit{Fase II: Desarrollo y Ejecución Técnico-Social (Semanas 5 a 11)}}} \\
+\multicolumn{7}{l}{\cellcolor{gray!18}\textbf{\textit{Fase II: Montaje Eléctrico, Calibración en Terreno y Señalética (Semanas 6 a 9 --- Plazo máx. OE2: 4 semanas)}}} \\
 \midrule
-A-05 & Fase II & Diseño e implementación de la arquitectura modular de la solución. & A-01, A-03 & Sem. 5--8 (4 sem) & Jose & Prototipo funcional modular documentado y verificado en laboratorio. \\
-A-06 & Fase II & Modelamiento financiero maestro, flujos de caja y análisis de viabilidad. & A-03, A-04 & Sem. 5--7 (3 sem) & Joaquín & Estructura presupuestaria maestra y proyección de liquidez operacional. \\
-A-07 & Fase II & Realización de talleres participativos y mesas de trabajo con usuarios. & A-04 & Sem. 6--9 (4 sem) & Mena & Actas de retroalimentación comunitaria y registro de usabilidad social. \\
-A-08 & Fase II & Integración sociotécnica del sistema y despliegue en entorno piloto. & A-05, A-07 & Sem. 8--11 (4 sem) & Joaquín & Solución integral operativa y desplegada en ambiente de pruebas piloto. \\
+A-05 & Fase II (OE2) & Montaje en cielo falso de gabinetes ignífugos IP65, canalización libre de halógenos, bornes WAGO y protecciones DIN utilizando EPP dieléctrico. & A-04 & Sem. 6--8 (3 sem) & Joaquín & 5 salas intervenidas bajo pliegos SEC RIC N.º~04/05 sin corte en enchufes de computadores (Cat.~3 y 5). \\
+A-06 & Fase II (OE2) & Calibración en terreno de sensibilidad PIR (ingreso macro) y radar Doppler mmWave 24~GHz (ocupantes estáticos) con temporizador de 10~min. & A-05 & Sem. 8--9 (2 sem) & Anais & Protocolo de calibración aprobado en las 5 salas con tasa nula de falsos apagados en estudio. \\
+A-07 & Fase II (OE4) & Instalación de placas acrílicas grabadas en láser y stickers vinílicos en accesos/interruptores para concientización de los usuarios (hasta 40/turno). & A-05 & Sem. 8--10 (3 sem) & Mena & 5 salas señalizadas e informadas a la comunidad estudiantil y docente (Cat.~4; \$99.220). \\
 \midrule
-\multicolumn{7}{l}{\cellcolor{black!5}\textbf{\textit{Fase III: Pruebas, Evaluación y Cierre (Semanas 11 a 15)}}} \\
+\multicolumn{7}{l}{\cellcolor{gray!18}\textbf{\textit{Fase III: Medición Comparativa, Auditoría y Transferencia Replicable (Semanas 10 a 15 --- Plazos OE3 y OE4)}}} \\
 \midrule
-A-09 & Fase III & Verificación funcional, control de calidad y mitigación de fallas. & A-08 & Sem. 11--13 (3 sem) & Anais & Informe de auditoría técnica de calidad y matriz de riesgos operacionales. \\
-A-10 & Fase III & Auditoría de costos incurridos, análisis de desvíos y balance financiero. & A-06, A-08 & Sem. 12--14 (3 sem) & Javier & Balance financiero de cierre y justificación detallada de ejecución. \\
-A-11 & Fase III & Sistematización editorial, ajuste de extensión (5--7 págs.) y cierre. & A-09, A-10 & Sem. 13--15 (3 sem) & Coni & Documento final consolidado, aprobado por el equipo y listo para entrega. \\
+A-08 & Fase III (OE3) & Monitoreo energético \textit{ex-post} continuo durante 4 semanas de prueba operativa y comparación estadística frente a la línea base (A-03). & A-03, A-06 & Sem. 10--13 (4 sem) & Joaquín & Telemetría validada que certifica reducción $\ge 50\%$ del consumo en desocupación (Cat.~2). \\
+A-09 & Fase III (OE3, OE4) & Auditoría de confiabilidad electromecánica (relés, filtros snubber y temperatura de gabinetes) y evaluación de experiencia de usuarios en sala. & A-06, A-07 & Sem. 11--13 (3 sem) & Anais & Acta de conformidad técnica y social sin incidentes ni interrupciones a equipos informáticos. \\
+A-10 & Fase III (OE4) & Rendición contable final, conciliación del fondo de reserva (\$50.700) y formalización de acta de inventario de bienes adquiridos para la USM. & A-02, A-08 & Sem. 13--14 (2 sem) & Javier & Balance financiero transparente al 100\% (\$1.250.000) y catastro patrimonial entregado a la DGI. \\
+A-11 & Fase III (OE4) & Edición e impresión de la Guía Técnica de Replicación, pendón de difusión e Informe Final de resultados para escalamiento a 50 salas del campus. & A-08, A-09, A-10 & Sem. 13--15 (3 sem) & Coni & 5 manuales técnicos impresos, pendón roller e Informe Final entregado (Cat.~4; \$81.400). \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\subsection{Análisis de Optimización de la Ruta de Trabajo y Paralelización}
-Una ejecución puramente secuencial de las 11 actividades demandaría un total agregado de 35 semanas-persona, lo cual excedería con creces los límites de un periodo académico regular. Por ello, la estrategia de planificación implementada introduce una \textbf{arquitectura de ejecución concurrente de triple vía} (vía técnica, vía económico-financiera y vía de asociatividad comunitaria), optimizando el tiempo y mitigando riesgos de detención operativa en la ruta crítica:
+\subsection{Optimización Temporal, Ruta Crítica y Paralelización de Procesos}
+Una ejecución estrictamente secuencial de las 11 actividades demandaría 32 semanas-actividad (o 17 semanas lineales al sumar $5+4+4+4$ semanas de los cuatro objetivos específicos), excediendo la duración de un semestre académico. Para optimizar el tiempo sin comprometer la calidad técnica, la Carta Gantt implementa una \textbf{arquitectura de ejecución concurrente} que comprime el proyecto a \textbf{15 semanas efectivas} mediante el control de la ruta crítica y tres ejes de paralelización:
 
 \begin{itemize}
-    \item \textbf{Compresión del Ciclo Inicial (Semanas 1 a 5):} Mientras el equipo de ingeniería formaliza la matriz de requerimientos (A-01), el área social ejecuta de forma paralela el mapeo territorial (A-02). Esto permite que el levantamiento de cotizaciones (A-03) y la tramitación de acuerdos institucionales (A-04) avancen solapados sin incurrir en tiempos muertos ni esperas burocráticas.
-    \item \textbf{Mitigación de Cuellos de Botella en Desarrollo (Semanas 5 a 11):} El desarrollo técnico del sistema (A-05) y la formulación presupuestaria maestra (A-06) se inician en sincronía al comenzar la Semana~5. Asimismo, los talleres participativos en terreno (A-07) se intercalan directamente durante el proceso de codificación e ingeniería, garantizando que los requerimientos de los usuarios retroalimenten oportunamente el prototipo antes de la integración final (A-08), evitando costosos re-procesos en etapas tardías.
-    \item \textbf{Cierre Concurrente y Control de Calidad (Semanas 11 a 15):} En la fase resolutiva, las pruebas de calidad funcional (A-09) y la auditoría financiera de balance (A-10) avanzan en paralelo entre las semanas 11 y 14. Ambas corrientes convergen de manera coordinada en la semana 13 para nutrir el proceso de edición, maquetación y control estricto de páginas liderado por el área editorial (A-11).
+    \item \textbf{Ruta Crítica del Proyecto ($\text{A-01} \rightarrow \text{A-04} \rightarrow \text{A-05} \rightarrow \text{A-06} \rightarrow \text{A-08} \rightarrow \text{A-11}$):} Define la duración mínima irreductible de 15 semanas, encadenando el levantamiento eléctrico (Sem.~1--2), la integración de los nodos ESP32 en banco de pruebas (Sem.~3--5), el montaje seguro en las 5 salas (Sem.~6--8), el ajuste fino de sensores y puesta en marcha al cierre de la Semana~9, las 4 semanas íntegras de medición comparativa \textit{ex-post} (Sem.~10--13) y la consolidación del informe y guía de réplica (Sem.~13--15).
+    \item \textbf{Paralelización 1 --- Medición de Línea Base Concurrente con Compras y Laboratorio (Semanas 1 a 5):} Mientras Javier gestiona las adquisiciones con proveedores (\text{A-02}) y Jose ensambla los prototipos con soporte de \textit{MCI Electronics} (\text{A-04}), Mena despliega los analizadores PZEM-004T y dataloggers en las 5 salas (\text{A-03}, Sem.~2--5). Esta decisión estratégica evita esperar a que termine el armado electrónico para recién medir el consumo previo, ahorrando 4 semanas completas en el calendario crítico.
+    \item \textbf{Paralelización 2 --- Calibración Fina y Señalética Educativa (Semanas 8 a 10):} Durante la última semana de montaje y el periodo de calibración de los radares mmWave y sensores PIR (\text{A-06}), se instalan simultáneamente las placas acrílicas y adhesivos informativos en las salas (\text{A-07}), preparando a los usuarios antes de iniciar la ventana oficial de pruebas del OE3 en la Semana~10.
+    \item \textbf{Paralelización 3 --- Auditoría Operativa, Rendición Contable y Cierre Documental (Semanas 11 a 15):} La auditoría de estabilidad y usabilidad (\text{A-09}, Sem.~11--13) se ejecuta en paralelo a la segunda mitad del monitoreo \textit{ex-post} (\text{A-08}). Asimismo, apenas concluye la captura de datos en la Semana~13, avanzan en sincronía la rendición financiera e inventario (\text{A-10}) y la impresión de manuales técnicos e informe final (\text{A-11}), evitando cuellos de botella al cierre del semestre.
 \end{itemize}
 
-\subsection{Distribución Equitativa y Balance de Cargas de Trabajo}
-Para asegurar una corresponsabilidad efectiva y prevenir sobrecargas individuales, el liderazgo de las 11 actividades clave se ha distribuido con un equilibrio riguroso entre los seis integrantes del equipo, considerando sus competencias principales y roles asignados:
+\subsection{Asignación de Recursos y Balance Equitativo de Responsabilidades}
+El liderazgo de las 11 actividades se distribuye simétricamente entre los seis integrantes del equipo conforme a su especialidad, asegurando trazabilidad directa con las cinco categorías presupuestarias:
 \begin{itemize}
-    \item \textbf{Jose (Líder Técnico):} Conduce el levantamiento de requerimientos y coherencia con la Fase~2 (A-01) y lidera la arquitectura de desarrollo modular (A-05), garantizando la solidez ingenieril del entregable.
-    \item \textbf{Joaquín (Líder Técnico):} Encabeza la formulación presupuestaria maestra (A-06) y la integración del sistema piloto (A-08), actuando además como orquestador general de la viabilidad económica.
-    \item \textbf{Javier (Analista Financiero):} Dirige la recolección de cotizaciones comerciales (A-03) y la auditoría final de costos y desviaciones (A-10), aportando exhaustividad y respaldo empírico a las finanzas.
-    \item \textbf{Mena (Gestor de Asociatividad):} Conduce la identificación de actores estratégicos (A-02) y la ejecución de talleres comunitarios (A-07), cimentando el impacto y la pertinencia territorial.
-    \item \textbf{Anais (Vinculación Institucional):} Responsable de formalizar los compromisos de apoyo (A-04) y liderar las pruebas de verificación funcional y riesgos operacionales (A-09).
-    \item \textbf{Coni (Calidad y Edición):} Asume la sistematización editorial final, el control de formato y la regulación estricta de la extensión reglamentaria de 5 a 7 páginas (A-11), supervisando además el registro continuo de horas de dedicación horaria en las categorías de \textit{Revisión}, \textit{Desarrollo}, \textit{Reuniones} e \textit{Informe}.
+    \item \textbf{Jose Astudillo (Líder Técnico --- Hardware y Planificación):} Lidera el levantamiento eléctrico inicial (\text{A-01}) y el diseño de firmware y armado de los 6 módulos ESP32 en laboratorio (\text{A-04}, \textit{Categorías 1 y 5}).
+    \item \textbf{Joaquín Barrios (Líder Técnico --- Montaje y Telemetría):} Dirige el montaje eléctrico bajo norma SEC en las 5 salas (\text{A-05}, \textit{Categorías 3 y 5}) y el monitoreo energético \textit{ex-post} (\text{A-08}, \textit{Categoría 2}).
+    \item \textbf{Javier Bravo (Analista Financiero):} Ejecuta el proceso de compras y convenio de descuento (\text{A-02}) y la rendición financiera final e inventario de activos USM (\text{A-10}, transversal a \textit{Categorías 1--5}).
+    \item \textbf{José Mena (Gestor de Asociatividad y Terreno):} Conduce la medición de línea base \textit{ex-ante} (\text{A-03}, \textit{Categoría 2}) y el despliegue de señalética y vinculación con usuarios (\text{A-07}, \textit{Categoría 4}).
+    \item \textbf{Anais Quinchao (Vinculación Institucional y Calidad):} Gestiona la calibración en terreno de sensores (\text{A-06}) y lidera la auditoría de confiabilidad operativa y validación con MCI/DGI (\text{A-09}).
+    \item \textbf{Constanza Ríos (Calidad, Edición y Transferencia):} Lidera la sistematización de resultados, edición e impresión de la Guía Técnica de Replicación y del Informe Final del proyecto (\text{A-11}, \textit{Categoría 4}).
 \end{itemize}
-Este esquema garantiza que cada miembro ostente la propiedad de al menos un hito crítico y participe en el soporte cruzado de las fases adyacentes, logrando una carga horaria simétrica y transparente.
