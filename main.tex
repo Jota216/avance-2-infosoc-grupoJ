@@ -4,67 +4,126 @@
 % INGENIERÍA, INFORMÁTICA Y SOCIEDAD
 % FASE 3: SEGUNDO AVANCE (PLAN DE ACCIÓN Y VIABILIDAD FINANCIERA)
 % ==============================================================================
-\documentclass[journal,11pt,onecolumn]{IEEEtran}
+\documentclass[12pt, a4paper]{article}
 
-% --- Paquetes de Idioma y Codificación ---
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[spanish,es-tabla]{babel}
-
-% --- Paquetes Matemáticos y Tablas Profesionales ---
-\usepackage{amsmath,amsfonts,amssymb}
-\usepackage{array,booktabs,tabularx,colortbl}
+\usepackage[spanish]{babel}
+\usepackage[top=2.5cm, bottom=2.5cm, left=3cm, right=2.5cm]{geometry}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage[table, xcdraw]{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage{array}
 \usepackage{multirow}
+\usepackage{makecell}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage{pdflscape}
+\usepackage{colortbl}
+\usepackage[colorlinks=true, linkcolor=usmazul, urlcolor=usmazul, citecolor=usmazul]{hyperref}
+\usepackage{url}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{setspace}
+\usepackage{xurl}
+\usepackage{float}
+\tcbuselibrary{skins, breakable}
 
-% --- Gráficos y Colores ---
-\usepackage{graphicx,float}
-\usepackage{xcolor}
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
 
-% --- Formato de Página y Enlaces ---
-\usepackage{geometry}
-\geometry{letterpaper, top=2.2cm, bottom=2.2cm, left=2.2cm, right=2.2cm}
-\usepackage[hidelinks]{hyperref}
+\definecolor{usmazul}{RGB}{0, 53, 128}
+\definecolor{usmceleste}{RGB}{0, 120, 190}
+\definecolor{usmgris}{RGB}{100, 100, 100}
+\definecolor{usmfondo}{RGB}{240, 245, 252}
+\definecolor{tablahead}{RGB}{0, 53, 128}
+\definecolor{tablafila}{RGB}{224, 234, 248}
 
-% --- Macros de Coordinación ---
-\newcommand{\pendiente}[2]{\par\noindent\textcolor{red!70!black}{\textbf{[Pendiente (#1):} #2\textbf{]}}\par}
-\newcommand{\categoria}[1]{\vspace{0.4em}\textbf{\textit{#1}}\vspace{0.2em}}
+\titleformat{\section}
+  {\color{usmazul}\large\bfseries}{\thesection.}{0.5em}{}[\color{usmazul}\titlerule]
+
+\titleformat{\subsection}
+  {\color{usmceleste}\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+
+% Agrega estas líneas justo aquí para configurar la sub-subsección:
+\titleformat{\subsubsection}
+  {\color{usmceleste}\normalsize\bfseries}{\thesubsubsection.}{0.5em}{}
+
+% ── DATOS DEL EQUIPO ────────────────────────────────────────
+\newcommand{\tituloProyecto}{Campus Zero: Control Automatizado de Iluminación y Climatización de Salas}
+\newcommand{\nombreEquipo}{Grupo J: SmartGrid}
+\newcommand{\lineaFinanciamiento}{Sustentabilidad y Medio Ambiente}
+\newcommand{\integranteUno}{Anais Quinchao}
+\newcommand{\rolUno}{202473106-8}
+\newcommand{\integranteDos}{Joaquin Barrios}
+\newcommand{\rolDos}{202473054-1}
+\newcommand{\integranteTres}{Javier Bravo}
+\newcommand{\rolTres}{202473076-2}
+\newcommand{\integranteCuatro}{Jose Astudillo}
+\newcommand{\rolCuatro}{202473015-0}
+\newcommand{\integranteCinco}{José Mena}
+\newcommand{\rolCinco}{202473079-7}
+\newcommand{\integranteSeis}{Constanza Rios}
+\newcommand{\rolSeis}{202404017-0}
+\newcommand{\Carrera}{Ingeniería Civil Informática}
+% \newcommand{\integranteCuatro}{Nombre Completo 4 · Carrera}
+\newcommand{\nombreCurso}{INF276}
+\newcommand{\nombreProfesor}{Horst von Brand}
+\newcommand{\fechaEntrega}{\today}
+% ────────────────────────────────────────────────────────────
+
+\titleformat{\section}
+  {\color{usmazul}\large\bfseries}{\thesection.}{0.5em}{}[\color{usmazul}\titlerule]
+
+\titleformat{\subsection}
+  {\color{usmceleste}\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{usmgris}\tituloProyecto}
+\fancyhead[R]{\small\color{usmgris}\nombreCurso}
+\fancyfoot[C]{\small\color{usmgris}Página \thepage\ de \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\newtcolorbox{instruccion}{
+  colback=usmfondo, colframe=usmceleste,
+  fonttitle=\bfseries\small, title=Instrucción para el equipo,
+  breakable, left=4pt, right=4pt, top=4pt, bottom=4pt,
+  before skip=6pt, after skip=6pt
+}
+
+% Macros para la Carta Gantt:
+%   \G  celda activa (azul)  |  \Hi  hito (rojo)  |  \X  celda vacía
+\newcommand{\G}{\cellcolor{usmceleste!70}}
+\newcommand{\Hi}{\cellcolor{red!60}}
+\newcommand{\X}{}
 
 \begin{document}
 
-% ------------------------------------------------------------------------------
-% 1. PORTADA REGLAMENTARIA Y TABLA DE DEDICACIÓN HORARIA (Responsable: Coni)
-% ------------------------------------------------------------------------------
 \input{Coni/portada}
 
-% ------------------------------------------------------------------------------
-% 2. RESUMEN E INTEGRACIÓN DEL PRIMER AVANCE / FASE 2 (Responsable: Coni)
-% ------------------------------------------------------------------------------
 \input{Coni/avance1_resumen}
 
-% ------------------------------------------------------------------------------
-% 3. PLAN DE ACTIVIDADES / CARTA GANTT (Responsable: Jose)
-% ------------------------------------------------------------------------------
 \input{Jose/gantt}
 
-% ------------------------------------------------------------------------------
-% 4. PRESUPUESTO DETALLADO Y VIABILIDAD FINANCIERA (Responsables: Joaquin y Javier)
-% ------------------------------------------------------------------------------
 \input{Joaquin/presupuesto}
+
 \input{Javier/justificaciones}
 
-% ------------------------------------------------------------------------------
-% 5. COLABORACIÓN Y ASOCIATIVIDAD (Responsable: Mena)
-% ------------------------------------------------------------------------------
 \input{Mena/asociatividad}
 
-% ------------------------------------------------------------------------------
-% 6. ANEXO OBLIGATORIO: BORRADOR DE CARTA DE APOYO SIMULADA (Responsable: Anais)
-% ------------------------------------------------------------------------------
 \input{Anais/carta_apoyo}
 
-% ------------------------------------------------------------------------------
-% 7. REFERENCIAS BIBLIOGRÁFICAS Y DOCUMENTALES (Responsable: Coni)
-% ------------------------------------------------------------------------------
 \input{Coni/referencias}
 
 \end{document}
