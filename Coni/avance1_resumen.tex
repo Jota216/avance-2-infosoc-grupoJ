@@ -1,45 +1,34 @@
+
 % !TEX root = ../main.tex
-% Resumen fiel a GrupoJ_Fase1.pdf, preparado para integrar con la Fase 3.
+% Resumen del Primer Avance - Proyecto Campus Zero
+
 \section{Antecedentes e Integración del Primer Avance}
 \label{sec:avance1}
 
-\subsection{Problema y justificación}
-En las salas de estudio y espacios de trabajo colaborativo de la Universidad Técnica Federico Santa María, Casa Central, las luces y los equipos de ventilación pueden quedar encendidos cuando las personas se retiran. Al depender del apagado manual, se genera un consumo eléctrico innecesario que representa un gasto para la universidad y un impacto ambiental evitable. Como estimación inicial, el primer avance consideró tres horas diarias de funcionamiento sin ocupantes, cifra que deberá comprobarse mediante mediciones. Con una potencia aproximada de 0,26~kW por sala, se estimó un desperdicio de 17,2~kWh mensuales por sala y de 85,8~kWh mensuales en cinco salas.
+\subsection{Problema y solución}
 
-\subsection{Solución y beneficiarios}
-El proyecto \textit{Campus Zero} propone instalar un sistema piloto de control automatizado en al menos cinco salas de estudio, utilizando sensores de presencia infrarrojos (PIR), relés inteligentes y microcontroladores. Si no se detectan personas durante diez minutos continuos, el sistema apagará la iluminación y los extractores de aire. No se intervendrá la alimentación eléctrica de computadores, para evitar posibles pérdidas de información. Se medirá el consumo antes y después de implementar la solución y se preparará una guía para replicarla en otras salas.
+En las salas de estudio de la UTFSM, Casa Central, las luces y extractores de aire pueden permanecer encendidos después de que los usuarios se retiran, generando un consumo eléctrico innecesario. Considerando una estimación inicial de tres horas diarias sin ocupantes, una potencia de 0,26~kW por sala y 22 días hábiles al mes, el desperdicio alcanzaría 85,8~kWh mensuales en cinco salas. Esta cifra deberá comprobarse mediante mediciones.
 
-La beneficiaria directa es la UTFSM, particularmente la administración de Casa Central, por la posibilidad de reducir costos de energía y emisiones asociadas. Los beneficiarios indirectos son los estudiantes, docentes y otros integrantes de la comunidad universitaria que ocupan las salas intervenidas, con una capacidad estimada de hasta 40 usuarios simultáneos entre las cinco salas.
+Para enfrentar el problema, \textit{Campus Zero} propone instalar un sistema automatizado en al menos cinco salas, utilizando sensores de presencia infrarrojos (PIR), relés inteligentes y microcontroladores. El sistema apagará las luces y extractores tras diez minutos continuos sin detectar personas, sin intervenir los computadores. Además, se comparará el consumo antes y después de la instalación para evaluar el ahorro obtenido.
 
-\subsection{Objetivos del proyecto}
-\noindent\textbf{Objetivo general.} Reducir el consumo eléctrico innecesario de iluminación y extractores de aire en salas de estudio del campus mediante un piloto de detección de presencia en al menos cinco salas durante 2026, dejando un modelo replicable para la universidad.
+\subsection{Beneficiarios y objetivos}
 
-\noindent\textbf{Objetivos específicos.}
+La beneficiaria directa es la UTFSM, particularmente la administración de Casa Central, por la posibilidad de reducir sus gastos eléctricos y el impacto ambiental asociado. Los beneficiarios indirectos son estudiantes, docentes y otros usuarios de las salas, con una capacidad estimada de hasta 40 personas simultáneas.
+
+\noindent\textbf{Objetivo general:} Reducir el consumo eléctrico innecesario de iluminación y extractores de aire mediante un sistema piloto de control automatizado en al menos cinco salas durante 2026, estableciendo una solución replicable para la universidad.
+
+\noindent\textbf{Objetivos específicos:}
 \begin{enumerate}
-\item \textbf{OE1:} Diseñar el control electrónico y adquirir los componentes para al menos cinco salas en un máximo de cinco semanas desde la adjudicación, sin superar \$1.250.000.
-\item \textbf{OE2:} Instalar y calibrar los módulos en las cinco salas, configurando el apagado tras diez minutos sin presencia, en un máximo de cuatro semanas desde la recepción de materiales.
-\item \textbf{OE3:} Comparar el consumo antes y después de la instalación durante cuatro semanas de prueba, buscando reducir al menos un 50\% del consumo energético durante períodos de desocupación.
-\item \textbf{OE4:} Entregar, en las cuatro semanas posteriores a las mediciones, un informe con resultados, rendición de cuentas, inventario y guía de replicación.
+    \item \textbf{OE1:} Diseñar el sistema y adquirir los componentes para al menos cinco salas en un máximo de cinco semanas desde la adjudicación de los fondos, sin superar \$1.250.000.
+
+    \item \textbf{OE2:} Instalar y calibrar el sistema en las cinco salas en un máximo de cuatro semanas desde la recepción de los materiales, configurando el apagado tras diez minutos continuos sin presencia.
+
+    \item \textbf{OE3:} Medir y comparar el consumo eléctrico antes y después de la instalación durante cuatro semanas de prueba, buscando una reducción de al menos un 50\% del consumo durante los períodos de desocupación.
+
+    \item \textbf{OE4:} Entregar el informe de resultados, rendición de cuentas, inventario de equipos y guía de replicación dentro de las cuatro semanas posteriores a la finalización de las mediciones.
 \end{enumerate}
 
-\subsection{Financiamiento y vínculo con este avance}
+\subsection{Financiamiento y continuidad}
 
-El proyecto se enmarca en la línea de financiamiento de
-\textbf{Sustentabilidad y Medio Ambiente}, ya que busca
-reducir el consumo eléctrico innecesario y contribuir
-a la eficiencia energética de la universidad.
-
-Para su implementación, se considera un presupuesto
-máximo de \$1.250.000, destinado a la adquisición
-de sensores de presencia, relés inteligentes,
-microcontroladores y otros componentes necesarios
-para intervenir las cinco salas seleccionadas.
-
-En este Segundo Avance se desarrolla la planificación
-de las actividades mediante una Carta Gantt, junto
-con el presupuesto detallado y la identificación de
-colaboradores que permitirían llevar a cabo el proyecto.
-Estas secciones buscan demostrar que la propuesta
-es viable y que puede ejecutarse dentro de los plazos
-y recursos establecidos.
+El proyecto pertenece a la línea de \textbf{Sustentabilidad y Medio Ambiente}, con un presupuesto máximo de \$1.250.000 para implementar el piloto. En este Segundo Avance se presenta la Carta Gantt, el presupuesto detallado y la red de colaboradores necesarios para planificar su ejecución y evaluar su viabilidad.
 
